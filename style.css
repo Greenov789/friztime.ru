@@ -347,6 +347,20 @@ section {
     color: var(--text-secondary);
 }
 
+.feature-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.feature-link:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+}
+
 /* Преимущества */
 .advantages {
     background-color: var(--primary-dark);
@@ -391,6 +405,20 @@ section {
     color: var(--text-secondary);
 }
 
+.advantage-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.advantage-link:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+}
+
 /* Галерея */
 .screenshots {
     background-color: var(--secondary-dark);
@@ -419,6 +447,20 @@ section {
 .screenshot p {
     text-align: center;
     color: var(--text-secondary);
+}
+
+.screenshot-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.screenshot-link:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
 }
 
 /* Скачать */
