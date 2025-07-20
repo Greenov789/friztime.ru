@@ -1,0 +1,176 @@
+:root {
+    --primary-color: #7fffd4; /* Аквамарин */
+    --primary-dark: #5fc9a8; /* Темный аквамарин */
+    --secondary-color: #48d1cc; /* Бирюзовый */
+    --background-color: #ffffff; /* Белый */
+    --text-color: #2c3e50;
+    --light-gray: #f5f5f5;
+    --gray: #e0e0e0;
+    --dark-gray: #7f8c8d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+/* Шапка */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background-color: var(--background-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo h1 {
+    color: var(--primary-dark);
+    font-size: 1.8em;
+}
+
+/* Кнопки */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 4px;
+    background-color: var(--light-gray);
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--gray);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+}
+
+.btn-large {
+    padding: 12px 24px;
+    font-size: 1.1em;
+}
+
+/* Личный кабинет */
+.dashboard {
+    display: flex;
+    min-height: 100vh;
+}
+
+.server-sidebar {
+    width: 80px;
+    background-color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.server-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--dark-gray);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.server-icon:hover {
+    border-radius: 30%;
+    background-color: var(--primary-color);
+}
+
+/* Просмотр сервера */
+.server-view {
+    display: flex;
+    min-height: 100vh;
+}
+
+.channel-sidebar {
+    width: 240px;
+    background-color: var(--secondary-color);
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.channel-list {
+    list-style: none;
+}
+
+.channel {
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.channel:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.channel.active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Сообщения */
+.message {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.message-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+}
+
+.message-content {
+    flex: 1;
+}
+
+.message-header {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 5px;
+}
+
+.message-text {
+    line-height: 1.4;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .server-sidebar, .channel-sidebar {
+        width: 60px;
+    }
+    
+    .server-icon {
+        width: 40px;
+        height: 40px;
+    }
+}
