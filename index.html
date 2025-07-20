@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status.net | Social</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">
+                    <span class="logo-icon">S</span>
+                    <h1>Status.net | Social</h1>
+                </div>
+                <nav class="nav">
+                    <a href="#features" class="nav-link">Возможности</a>
+                    <a href="#about" class="nav-link">О нас</a>
+                    <a href="#" class="nav-link" id="login-btn">Войти</a>
+                    <a href="#" class="btn btn-primary" id="register-btn">Регистрация</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-inner">
+                <div class="hero-content">
+                    <h2>Ваше место для общения</h2>
+                    <p>Присоединяйтесь к миллионам пользователей Status.net | Social - платформе для общения, вдохновленной Discord, но с уникальными возможностями.</p>
+                    <div class="hero-buttons">
+                        <a href="#" class="btn btn-large btn-primary" id="main-register-btn">Начать бесплатно</a>
+                        <a href="#features" class="btn btn-large btn-secondary">Узнать больше</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="mockup">
+                        <div class="mockup-header">
+                            <div class="mockup-server">Status.net</div>
+                            <div class="mockup-channels">
+                                <div class="mockup-channel active"># общий</div>
+                                <div class="mockup-channel"># игры</div>
+                                <div class="mockup-channel"># музыка</div>
+                            </div>
+                        </div>
+                        <div class="mockup-messages">
+                            <div class="mockup-message">
+                                <div class="mockup-avatar" style="background-color: #1abc9c;">U</div>
+                                <div class="mockup-message-content">
+                                    <div class="mockup-message-header">
+                                        <span class="mockup-username">User123</span>
+                                        <span class="mockup-time">12:34</span>
+                                    </div>
+                                    <div class="mockup-text">Привет всем! Как ваши дела?</div>
+                                </div>
+                            </div>
+                            <div class="mockup-message">
+                                <div class="mockup-avatar" style="background-color: #3498db;">A</div>
+                                <div class="mockup-message-content">
+                                    <div class="mockup-message-header">
+                                        <span class="mockup-username">Admin</span>
+                                        <span class="mockup-time">12:35</span>
+                                    </div>
+                                    <div class="mockup-text">Привет! Все отлично, спасибо! Как твои?</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mockup-input">
+                            <input type="text" placeholder="Написать сообщение...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Возможности Status.net</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon" style="background-color: #1abc9c;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <h3>Серверы и каналы</h3>
+                    <p>Создавайте свои серверы с текстовыми и голосовыми каналами для общения с друзьями и сообществами.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background-color: #3498db;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3>Общение в реальном времени</h3>
+                    <p>Общайтесь с друзьями без задержек благодаря нашей технологии реального времени.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background-color: #9b59b6;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                    </div>
+                    <h3>Голосовые звонки</h3>
+                    <p>Высококачественные голосовые звонки с друзьями и участниками сервера.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-inner">
+                <div class="about-image">
+                    <div class="about-mockup">
+                        <div class="about-mockup-server">Ваш сервер</div>
+                        <div class="about-mockup-members">
+                            <div class="about-mockup-member">
+                                <div class="about-mockup-avatar" style="background-color: #1abc9c;">U</div>
+                                <span class="about-mockup-name">User123</span>
+                                <span class="about-mockup-status online">online</span>
+                            </div>
+                            <div class="about-mockup-member">
+                                <div class="about-mockup-avatar" style="background-color: #3498db;">A</div>
+                                <span class="about-mockup-name">Admin</span>
+                                <span class="about-mockup-status online">online</span>
+                            </div>
+                            <div class="about-mockup-member">
+                                <div class="about-mockup-avatar" style="background-color: #e74c3c;">F</div>
+                                <span class="about-mockup-name">Friend</span>
+                                <span class="about-mockup-status offline">offline</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <h2 class="section-title">О Status.net | Social</h2>
+                    <p>Status.net - это современная платформа для общения, которая объединяет лучшие черты популярных мессенджеров с уникальными возможностями.</p>
+                    <p>Наша миссия - создать удобное и безопасное пространство для общения, где каждый сможет найти свое сообщество.</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <div class="stat-number">1M+</div>
+                            <div class="stat-label">пользователей</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">100K+</div>
+                            <div class="stat-label">серверов</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">работаем для вас</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <div class="cta-inner">
+                <h2>Готовы присоединиться?</h2>
+                <p>Создайте аккаунт и начните общение прямо сейчас!</p>
+                <a href="#" class="btn btn-large btn-primary" id="bottom-register-btn">Зарегистрироваться</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-logo">
+                    <span class="logo-icon">S</span>
+                    <h3>Status.net | Social</h3>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Продукт</h4>
+                        <a href="#" class="footer-link">Возможности</a>
+                        <a href="#" class="footer-link">Тарифы</a>
+                        <a href="#" class="footer-link">Приложения</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Компания</h4>
+                        <a href="#" class="footer-link">О нас</a>
+                        <a href="#" class="footer-link">Блог</a>
+                        <a href="#" class="footer-link">Карьера</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Ресурсы</h4>
+                        <a href="#" class="footer-link">Помощь</a>
+                        <a href="#" class="footer-link">Сообщество</a>
+                        <a href="#" class="footer-link">Форум</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">© 2023 Status.net | Social. Все права защищены.</div>
+                <div class="footer-social">
+                    <a href="#" class="social-link">Twitter</a>
+                    <a href="#" class="social-link">Facebook</a>
+                    <a href="#" class="social-link">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальные окна -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Вход в Status.net</h2>
+            <form class="auth-form">
+                <div class="form-group">
+                    <label for="login-email">Email или имя пользователя</label>
+                    <input type="text" id="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Пароль</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Войти</button>
+            </form>
+            <div class="auth-footer">
+                Нет аккаунта? <a href="#" id="switch-to-register">Зарегистрироваться</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="register-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Регистрация в Status.net</h2>
+            <form class="auth-form">
+                <div class="form-group">
+                    <label for="register-email">Email</label>
+                    <input type="email" id="register-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-username">Имя пользователя</label>
+                    <input type="text" id="register-username" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Пароль</label>
+                    <input type="password" id="register-password" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-password-confirm">Подтвердите пароль</label>
+                    <input type="password" id="register-password-confirm" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Зарегистрироваться</button>
+            </form>
+            <div class="auth-footer">
+                Уже есть аккаунт? <a href="#" id="switch-to-login">Войти</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Управление модальными окнами
+        const loginBtn = document.getElementById('login-btn');
+        const registerBtn = document.getElementById('register-btn');
+        const mainRegisterBtn = document.getElementById('main-register-btn');
+        const bottomRegisterBtn = document.getElementById('bottom-register-btn');
+        const loginModal = document.getElementById('login-modal');
+        const registerModal = document.getElementById('register-modal');
+        const closeModalButtons = document.querySelectorAll('.close-modal');
+        const switchToRegister = document.getElementById('switch-to-register');
+        const switchToLogin = document.getElementById('switch-to-login');
+
+        // Открытие модальных окон
+        function openModal(modal) {
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Закрытие модальных окон
+        function closeModal(modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Обработчики событий
+        loginBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal(loginModal);
+        });
+
+        registerBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal(registerModal);
+        });
+
+        mainRegisterBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal(registerModal);
+        });
+
+        bottomRegisterBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal(registerModal);
+        });
+
+        closeModalButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const modal = button.closest('.modal');
+                closeModal(modal);
+            });
+        });
+
+        switchToRegister.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeModal(loginModal);
+            openModal(registerModal);
+        });
+
+        switchToLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeModal(registerModal);
+            openModal(loginModal);
+        });
+
+        // Закрытие при клике вне модального окна
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) {
+                closeModal(e.target);
+            }
+        });
+
+        // Простая валидация форм
+        document.querySelectorAll('.auth-form').forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Форма отправлена! В реальном приложении здесь была бы отправка на сервер.');
+                closeModal(loginModal);
+                closeModal(registerModal);
+            });
+        });
+    </script>
+</body>
+</html>
