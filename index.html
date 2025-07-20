@@ -3,253 +3,336 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Status.net | Social</title>
+    <title>Status.net | Социальная платформа нового поколения</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="app-container">
-        <!-- Боковая панель серверов -->
-        <div class="server-sidebar">
-            <div class="server-icon home active">
-                <i class="fas fa-home"></i>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <div class="logo">
+                    <span class="logo-icon">S</span>
+                    <h1>Status.net</h1>
+                </div>
             </div>
-            <div class="divider"></div>
-            <div class="server-icon">
-                <span>ИГ</span>
+            <div class="navbar-menu">
+                <a href="#features" class="nav-link">Возможности</a>
+                <a href="#advantages" class="nav-link">Преимущества</a>
+                <a href="#screenshots" class="nav-link">Скриншоты</a>
+                <a href="#community" class="nav-link">Сообщество</a>
             </div>
-            <div class="server-icon">
-                <span>МУ</span>
-            </div>
-            <div class="server-icon add">
-                <i class="fas fa-plus"></i>
+            <div class="navbar-actions">
+                <a href="#" class="btn btn-outline">Войти</a>
+                <a href="#" class="btn btn-primary">Скачать</a>
             </div>
         </div>
+    </nav>
 
-        <!-- Боковая панель каналов -->
-        <div class="channel-sidebar">
-            <div class="server-header">
-                <h3>Status Network</h3>
+    <!-- Герой-секция -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Ваше место для общения</h1>
+                <p>Status.net - это современная платформа для общения, где вы можете создавать сообщества, общаться с друзьями и находить единомышленников.</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn btn-large btn-primary">
+                        <i class="fas fa-download"></i> Скачать для Windows
+                    </a>
+                    <a href="#features" class="btn btn-large btn-outline">
+                        <i class="fas fa-info-circle"></i> Узнать больше
+                    </a>
+                </div>
             </div>
-            
-            <div class="channel-category">
-                <div class="category-header">
-                    <i class="fas fa-chevron-down"></i>
-                    <h4>ТЕКСТОВЫЕ КАНАЛЫ</h4>
-                </div>
-                <ul class="channel-list">
-                    <li class="channel active">
-                        <i class="fas fa-hashtag"></i>
-                        <span>общий</span>
-                    </li>
-                    <li class="channel">
-                        <i class="fas fa-hashtag"></i>
-                        <span>правила</span>
-                    </li>
-                    <li class="channel">
-                        <i class="fas fa-hashtag"></i>
-                        <span>чат</span>
-                    </li>
-                </ul>
-            </div>
-            
-            <div class="channel-category">
-                <div class="category-header">
-                    <i class="fas fa-chevron-down"></i>
-                    <h4>ГОЛОСОВЫЕ КАНАЛЫ</h4>
-                </div>
-                <ul class="channel-list">
-                    <li class="channel voice">
-                        <i class="fas fa-volume-up"></i>
-                        <span>Общий</span>
-                    </li>
-                    <li class="channel voice">
-                        <i class="fas fa-volume-up"></i>
-                        <span>Игры</span>
-                    </li>
-                </ul>
-            </div>
-            
-            <div class="user-panel">
-                <div class="user-avatar">
-                    <div class="avatar" style="background-color: #5865F2;">Ю</div>
-                    <div class="status online"></div>
-                </div>
-                <div class="user-info">
-                    <div class="username">Юзер123</div>
-                    <div class="user-id">#1234</div>
-                </div>
-                <div class="user-controls">
-                    <i class="fas fa-microphone"></i>
-                    <i class="fas fa-headphones"></i>
-                    <i class="fas fa-cog"></i>
+            <div class="hero-image">
+                <div class="app-mockup">
+                    <div class="mockup-header">
+                        <div class="mockup-server">Status.net</div>
+                        <div class="mockup-channels">
+                            <div class="mockup-channel active">#общий</div>
+                            <div class="mockup-channel">#игры</div>
+                        </div>
+                    </div>
+                    <div class="mockup-messages">
+                        <div class="mockup-message">
+                            <div class="mockup-avatar" style="background-color: #5865F2;">А</div>
+                            <div class="mockup-message-content">
+                                <div class="mockup-message-header">
+                                    <span class="mockup-username">Админ</span>
+                                    <span class="mockup-time">12:34</span>
+                                </div>
+                                <div class="mockup-text">Добро пожаловать на сервер Status.net!</div>
+                            </div>
+                        </div>
+                        <div class="mockup-message">
+                            <div class="mockup-avatar" style="background-color: #ED4245;">Ю</div>
+                            <div class="mockup-message-content">
+                                <div class="mockup-message-header">
+                                    <span class="mockup-username">Юзер123</span>
+                                    <span class="mockup-time">12:35</span>
+                                </div>
+                                <div class="mockup-text">Привет всем! Как дела? 😊</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mockup-input">
+                        <input type="text" placeholder="Написать сообщение...">
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Основное содержимое -->
-        <div class="main-content">
-            <div class="channel-header">
-                <div class="channel-info">
-                    <i class="fas fa-hashtag"></i>
-                    <h2>общий</h2>
-                </div>
-                <div class="channel-toolbar">
-                    <div class="search-bar">
-                        <i class="fas fa-search"></i>
-                        <input type="text" placeholder="Поиск">
+    <!-- Возможности -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Возможности Status.net</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon" style="background-color: #5865F2;">
+                        <i class="fas fa-users"></i>
                     </div>
-                    <i class="fas fa-inbox"></i>
-                    <i class="fas fa-question-circle"></i>
+                    <h3>Серверы и сообщества</h3>
+                    <p>Создавайте собственные серверы с различными каналами для текстового и голосового общения.</p>
                 </div>
-            </div>
-            
-            <div class="message-container">
-                <div class="welcome-message">
-                    <h1>Добро пожаловать в #общий!</h1>
-                    <p>Это начало канала #общий.</p>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background-color: #57F287;">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Общение в реальном времени</h3>
+                    <p>Мгновенные сообщения, голосовые и видео звонки с минимальной задержкой.</p>
                 </div>
-                
-                <div class="message">
-                    <div class="message-avatar">
-                        <div class="avatar" style="background-color: #ED4245;">А</div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background-color: #FEE75C;">
+                        <i class="fas fa-robot"></i>
                     </div>
-                    <div class="message-content">
-                        <div class="message-header">
-                            <span class="username">Админ</span>
-                            <span class="timestamp">Сегодня в 12:34</span>
-                        </div>
-                        <div class="message-text">
-                            Добро пожаловать на наш сервер! Здесь вы можете общаться с другими участниками.
-                        </div>
-                    </div>
+                    <h3>Интеграция с ботами</h3>
+                    <p>Добавляйте полезных ботов для модерации, музыки, игр и автоматизации.</p>
                 </div>
-                
-                <div class="message">
-                    <div class="message-avatar">
-                        <div class="avatar" style="background-color: #5865F2;">Ю</div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background-color: #EB459E;">
+                        <i class="fas fa-shield-alt"></i>
                     </div>
-                    <div class="message-content">
-                        <div class="message-header">
-                            <span class="username">Юзер123</span>
-                            <span class="timestamp">Сегодня в 12:35</span>
-                        </div>
-                        <div class="message-text">
-                            Привет всем! Как ваши дела? 😊
-                        </div>
-                    </div>
+                    <h3>Безопасность</h3>
+                    <p>Надежное шифрование и гибкие настройки приватности для вашего комфорта.</p>
                 </div>
-            </div>
-            
-            <div class="message-input-container">
-                <div class="message-input-toolbar">
-                    <i class="fas fa-plus-circle"></i>
-                    <i class="fas fa-gift"></i>
-                    <i class="fas fa-grin"></i>
-                </div>
-                <div class="message-input">
-                    <input type="text" placeholder="Написать сообщение в #общий">
-                    <div class="input-controls">
-                        <i class="fas fa-at"></i>
-                        <i class="fas fa-image"></i>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background-color: #ED4245;">
+                        <i class="fas fa-gamepad"></i>
                     </div>
+                    <h3>Игровая интеграция</h3>
+                    <p>Отображайте игру, в которую играете, и находите партнеров для совместных игр.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon" style="background-color: #9C84EF;">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Кроссплатформенность</h3>
+                    <p>Доступ с компьютера, смартфона или прямо из браузера без установки.</p>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Боковая панель участников -->
-        <div class="member-sidebar">
-            <div class="member-header">
-                <h3>УЧАСТНИКИ</h3>
-                <i class="fas fa-search"></i>
-            </div>
-            
-            <div class="member-list">
-                <div class="member-category">
-                    <h4>ОНЛАЙН — 2</h4>
-                    <div class="member">
-                        <div class="member-avatar">
-                            <div class="avatar" style="background-color: #ED4245;">А</div>
-                            <div class="status online"></div>
+    <!-- Преимущества -->
+    <section id="advantages" class="advantages">
+        <div class="container">
+            <h2 class="section-title">Почему выбирают Status.net?</h2>
+            <div class="advantages-content">
+                <div class="advantage-text">
+                    <div class="advantage-item">
+                        <div class="advantage-icon">
+                            <i class="fas fa-bolt"></i>
                         </div>
-                        <div class="member-info">
-                            <span class="username">Админ</span>
-                            <span class="role" style="color: #ED4245;">АДМИН</span>
+                        <div class="advantage-info">
+                            <h3>Высокая производительность</h3>
+                            <p>Оптимизированный клиент работает даже на слабых устройствах без лагов и зависаний.</p>
                         </div>
                     </div>
-                    <div class="member">
-                        <div class="member-avatar">
-                            <div class="avatar" style="background-color: #5865F2;">Ю</div>
-                            <div class="status online"></div>
+                    <div class="advantage-item">
+                        <div class="advantage-icon">
+                            <i class="fas fa-sliders-h"></i>
                         </div>
-                        <div class="member-info">
-                            <span class="username">Юзер123</span>
+                        <div class="advantage-info">
+                            <h3>Гибкие настройки</h3>
+                            <p>Персонализируйте интерфейс под свои нужды с помощью тем, плагинов и настроек.</p>
+                        </div>
+                    </div>
+                    <div class="advantage-item">
+                        <div class="advantage-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <div class="advantage-info">
+                            <h3>Облачная синхронизация</h3>
+                            <p>Ваши данные и настройки доступны на всех устройствах благодаря облачному хранению.</p>
+                        </div>
+                    </div>
+                    <div class="advantage-item">
+                        <div class="advantage-icon">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <div class="advantage-info">
+                            <h3>Поддержка языков</h3>
+                            <p>Полная локализация интерфейса на русский язык и поддержка кириллицы в никнеймах.</p>
                         </div>
                     </div>
                 </div>
-                
-                <div class="member-category">
-                    <h4>ОФФЛАЙН — 1</h4>
-                    <div class="member offline">
-                        <div class="member-avatar">
-                            <div class="avatar" style="background-color: #57F287;">Б</div>
-                            <div class="status offline"></div>
+                <div class="advantage-image">
+                    <div class="mockup-settings">
+                        <div class="mockup-tabs">
+                            <div class="mockup-tab active">Настройки</div>
+                            <div class="mockup-tab">Уведомления</div>
+                            <div class="mockup-tab">Внешний вид</div>
                         </div>
-                        <div class="member-info">
-                            <span class="username">Бот</span>
-                            <span class="role" style="color: #57F287;">БОТ</span>
+                        <div class="mockup-settings-content">
+                            <div class="mockup-setting">
+                                <label>Тема оформления</label>
+                                <select>
+                                    <option>Темная</option>
+                                    <option>Светлая</option>
+                                    <option>Системная</option>
+                                </select>
+                            </div>
+                            <div class="mockup-setting">
+                                <label>Масштаб интерфейса</label>
+                                <input type="range" min="80" max="120" value="100">
+                            </div>
+                            <div class="mockup-setting">
+                                <label>Язык</label>
+                                <select>
+                                    <option>Русский</option>
+                                    <option>English</option>
+                                </select>
+                            </div>
+                            <button class="mockup-save">Сохранить изменения</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Модальное окно входа -->
-    <div class="login-modal">
-        <div class="login-container">
-            <div class="login-header">
-                <h2>Добро пожаловать обратно!</h2>
-                <p>Мы рады снова видеть вас!</p>
+    <!-- Скриншоты -->
+    <section id="screenshots" class="screenshots">
+        <div class="container">
+            <h2 class="section-title">Status.net в действии</h2>
+            <div class="screenshots-slider">
+                <div class="screenshot">
+                    <img src="https://via.placeholder.com/800x500/2b2d31/ffffff?text=Главный+интерфейс" alt="Главный интерфейс">
+                    <p>Интуитивно понятный интерфейс общения</p>
+                </div>
+                <div class="screenshot">
+                    <img src="https://via.placeholder.com/800x500/313338/ffffff?text=Голосовые+каналы" alt="Голосовые каналы">
+                    <p>Голосовые каналы с отличным качеством связи</p>
+                </div>
+                <div class="screenshot">
+                    <img src="https://via.placeholder.com/800x500/1e1f22/ffffff?text=Настройки" alt="Настройки">
+                    <p>Гибкие настройки персонализации</p>
+                </div>
             </div>
-            
-            <form class="login-form">
-                <div class="form-group">
-                    <label for="email">ЭЛЕКТРОННАЯ ПОЧТА ИЛИ НОМЕР ТЕЛЕФОНА</label>
-                    <input type="text" id="email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="password">ПАРОЛЬ</label>
-                    <input type="password" id="password" required>
-                </div>
-                
-                <a href="#" class="forgot-password">Забыли пароль?</a>
-                
-                <button type="submit" class="login-button">Войти</button>
-                
-                <div class="register-link">
-                    Нужен аккаунт? <a href="#">Зарегистрироваться</a>
-                </div>
-            </form>
         </div>
-    </div>
+    </section>
+
+    <!-- Сообщество -->
+    <section id="community" class="community">
+        <div class="container">
+            <h2 class="section-title">Присоединяйтесь к нашему сообществу</h2>
+            <div class="community-stats">
+                <div class="stat-item">
+                    <div class="stat-number">10M+</div>
+                    <div class="stat-label">пользователей</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">500K+</div>
+                    <div class="stat-label">сообществ</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">стран</div>
+                </div>
+            </div>
+            <div class="community-cta">
+                <h3>Готовы начать?</h3>
+                <p>Скачайте Status.net и присоединяйтесь к миллионам пользователей по всему миру!</p>
+                <div class="download-buttons">
+                    <a href="#" class="btn btn-large btn-primary">
+                        <i class="fab fa-windows"></i> Скачать для Windows
+                    </a>
+                    <a href="#" class="btn btn-large btn-outline">
+                        <i class="fab fa-apple"></i> Скачать для Mac
+                    </a>
+                    <a href="#" class="btn btn-large btn-outline">
+                        <i class="fab fa-android"></i> Скачать для Android
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-icon">S</span>
+                        <h2>Status.net</h2>
+                    </div>
+                    <p>© 2023 Status.net. Все права защищены.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Продукт</h4>
+                        <a href="#">Возможности</a>
+                        <a href="#">Скачать</a>
+                        <a href="#">Статус</a>
+                        <a href="#">Безопасность</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Компания</h4>
+                        <a href="#">О нас</a>
+                        <a href="#">Блог</a>
+                        <a href="#">Карьера</a>
+                        <a href="#">Контакты</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Ресурсы</h4>
+                        <a href="#">Поддержка</a>
+                        <a href="#">Разработчикам</a>
+                        <a href="#">Сообщество</a>
+                        <a href="#">Документация</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Политики</h4>
+                        <a href="#">Условия</a>
+                        <a href="#">Конфиденциальность</a>
+                        <a href="#">Cookie</a>
+                        <a href="#">Авторские права</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-twitch"></i></a>
+                <a href="#"><i class="fab fa-reddit"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        // В реальном приложении здесь будет функциональность
-        document.addEventListener('DOMContentLoaded', function() {
-            // Закрытие модального окна при клике вне его
-            const loginModal = document.querySelector('.login-modal');
-            loginModal.addEventListener('click', function(e) {
-                if (e.target === this) {
-                    this.style.display = 'none';
-                }
-            });
-            
-            // Открытие модального окна при клике на иконку настроек
-            document.querySelector('.fa-cog').addEventListener('click', function() {
-                loginModal.style.display = 'flex';
+        // Простая навигация по странице
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
         });
     </script>
