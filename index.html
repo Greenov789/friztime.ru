@@ -1,37 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Status.net | Discord-like Social</title>
+    <title>Status.net | Social</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Whitney:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="app-container">
-        <!-- Серверная панель -->
+        <!-- Боковая панель серверов -->
         <div class="server-sidebar">
-            <div class="server-icon home-server active">
-                <img src="https://discord.com/assets/1f0bfc0865d324c2587920a7d80c609b.png" alt="Home">
+            <div class="server-icon home active">
+                <i class="fas fa-home"></i>
             </div>
-            <div class="server-divider"></div>
+            <div class="divider"></div>
             <div class="server-icon">
-                <span>S1</span>
+                <span>ИГ</span>
             </div>
             <div class="server-icon">
-                <span>S2</span>
+                <span>МУ</span>
             </div>
-            <div class="server-icon add-server">
+            <div class="server-icon add">
                 <i class="fas fa-plus"></i>
             </div>
         </div>
 
-        <!-- Панель каналов -->
+        <!-- Боковая панель каналов -->
         <div class="channel-sidebar">
             <div class="server-header">
                 <h3>Status Network</h3>
-                <i class="fas fa-chevron-down"></i>
             </div>
             
             <div class="channel-category">
@@ -63,7 +62,7 @@
                 <ul class="channel-list">
                     <li class="channel voice">
                         <i class="fas fa-volume-up"></i>
-                        <span>Общий чат</span>
+                        <span>Общий</span>
                     </li>
                     <li class="channel voice">
                         <i class="fas fa-volume-up"></i>
@@ -74,12 +73,12 @@
             
             <div class="user-panel">
                 <div class="user-avatar">
-                    <div class="avatar" style="background-color: #5865F2;">U</div>
+                    <div class="avatar" style="background-color: #5865F2;">Ю</div>
                     <div class="status online"></div>
                 </div>
                 <div class="user-info">
-                    <div class="username">Username#1234</div>
-                    <div class="user-id">1234567890</div>
+                    <div class="username">Юзер123</div>
+                    <div class="user-id">#1234</div>
                 </div>
                 <div class="user-controls">
                     <i class="fas fa-microphone"></i>
@@ -114,30 +113,30 @@
                 
                 <div class="message">
                     <div class="message-avatar">
-                        <div class="avatar" style="background-color: #ED4245;">A</div>
+                        <div class="avatar" style="background-color: #ED4245;">А</div>
                     </div>
                     <div class="message-content">
                         <div class="message-header">
-                            <span class="username">Admin</span>
+                            <span class="username">Админ</span>
                             <span class="timestamp">Сегодня в 12:34</span>
                         </div>
                         <div class="message-text">
-                            Добро пожаловать на сервер Status.net! Здесь вы можете общаться с друзьями и сообществами.
+                            Добро пожаловать на наш сервер! Здесь вы можете общаться с другими участниками.
                         </div>
                     </div>
                 </div>
                 
                 <div class="message">
                     <div class="message-avatar">
-                        <div class="avatar" style="background-color: #5865F2;">U</div>
+                        <div class="avatar" style="background-color: #5865F2;">Ю</div>
                     </div>
                     <div class="message-content">
                         <div class="message-header">
-                            <span class="username">Username</span>
+                            <span class="username">Юзер123</span>
                             <span class="timestamp">Сегодня в 12:35</span>
                         </div>
                         <div class="message-text">
-                            Привет всем! Как дела? 😊
+                            Привет всем! Как ваши дела? 😊
                         </div>
                     </div>
                 </div>
@@ -159,7 +158,7 @@
             </div>
         </div>
 
-        <!-- Панель участников -->
+        <!-- Боковая панель участников -->
         <div class="member-sidebar">
             <div class="member-header">
                 <h3>УЧАСТНИКИ</h3>
@@ -171,21 +170,21 @@
                     <h4>ОНЛАЙН — 2</h4>
                     <div class="member">
                         <div class="member-avatar">
-                            <div class="avatar" style="background-color: #ED4245;">A</div>
+                            <div class="avatar" style="background-color: #ED4245;">А</div>
                             <div class="status online"></div>
                         </div>
                         <div class="member-info">
-                            <span class="username">Admin</span>
-                            <span class="role" style="color: #ED4245;">ADMIN</span>
+                            <span class="username">Админ</span>
+                            <span class="role" style="color: #ED4245;">АДМИН</span>
                         </div>
                     </div>
                     <div class="member">
                         <div class="member-avatar">
-                            <div class="avatar" style="background-color: #5865F2;">U</div>
+                            <div class="avatar" style="background-color: #5865F2;">Ю</div>
                             <div class="status online"></div>
                         </div>
                         <div class="member-info">
-                            <span class="username">Username</span>
+                            <span class="username">Юзер123</span>
                         </div>
                     </div>
                 </div>
@@ -194,12 +193,12 @@
                     <h4>ОФФЛАЙН — 1</h4>
                     <div class="member offline">
                         <div class="member-avatar">
-                            <div class="avatar" style="background-color: #57F287;">B</div>
+                            <div class="avatar" style="background-color: #57F287;">Б</div>
                             <div class="status offline"></div>
                         </div>
                         <div class="member-info">
-                            <span class="username">Bot</span>
-                            <span class="role" style="color: #57F287;">BOT</span>
+                            <span class="username">Бот</span>
+                            <span class="role" style="color: #57F287;">БОТ</span>
                         </div>
                     </div>
                 </div>
@@ -212,7 +211,7 @@
         <div class="login-container">
             <div class="login-header">
                 <h2>Добро пожаловать обратно!</h2>
-                <p>Мы так рады снова вас видеть!</p>
+                <p>Мы рады снова видеть вас!</p>
             </div>
             
             <form class="login-form">
@@ -231,23 +230,27 @@
                 <button type="submit" class="login-button">Войти</button>
                 
                 <div class="register-link">
-                    Нужна учетная запись? <a href="#">Зарегистрироваться</a>
+                    Нужен аккаунт? <a href="#">Зарегистрироваться</a>
                 </div>
             </form>
         </div>
     </div>
 
     <script>
-        // В реальном приложении здесь был бы JavaScript для функциональности
+        // В реальном приложении здесь будет функциональность
         document.addEventListener('DOMContentLoaded', function() {
-            // Пример: закрытие модального окна при клике вне его
-            document.querySelector('.login-modal').addEventListener('click', function(e) {
+            // Закрытие модального окна при клике вне его
+            const loginModal = document.querySelector('.login-modal');
+            loginModal.addEventListener('click', function(e) {
                 if (e.target === this) {
                     this.style.display = 'none';
                 }
             });
             
-            // В реальном приложении здесь была бы аутентификация и другие функции
+            // Открытие модального окна при клике на иконку настроек
+            document.querySelector('.fa-cog').addEventListener('click', function() {
+                loginModal.style.display = 'flex';
+            });
         });
     </script>
 </body>
