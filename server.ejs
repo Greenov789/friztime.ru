@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= server.name %> | Status.net</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="server-view">
+    <div class="server-sidebar">
+        <div class="server-header">
+            <h3><%= server.name %></h3>
+        </div>
+        
+        <div class="channel-category">
+            <h4>ТЕКСТОВЫЕ КАНАЛЫ</h4>
+            <ul class="channel-list">
+                <% channels.forEach(channel => { %>
+                    <li class="channel <%= channel.id === currentChannel.id ? 'active' : '' %>">
+                        <a href="/server/<%= server.id %>?channel=<%= channel.id %>">
+                            # <%= channel.name %>
+                        </a>
+                    </li>
+                <% }); %>
+            </ul>
+            
+            <button class="add-channel" data-modal="create-channel">
+                + Добавить канал
+            </button>
+        </div>
+        
+        <div class="user-panel">
+            <div class="user-avatar">
+                <div class="avatar" style="background-color: <%= user.avatarColor || '#7fffd4' %>">
+                    <%= user.username.charAt(0).toUpperCase() %>
+                </div>
+            </div>
+            <div class="user-info">
+                <span class="username"><%= user.username %></span>
+                <span class="user-id">#<%= user.id.toString().slice(-4) %></span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="channel-content">
+        <div class="channel-header">
+            <h2># <%= currentChannel.name %></h2>
+        </div>
+        
+        <div class="messages-container">
+            <% if (messages.length === 0) { %>
+                <div class="welcome-message">
+                    <h3>Добро пожаловать в #<%= currentChannel.name %>!</h3>
+                    <p>Это начало канала #<%= currentChannel.name %></p>
+                </div>
+            <% } %>
+            
+            <% messages.forEach(message => { 
+                const author = users.find(u => u.id === message.authorId); %>
+                <div class="message">
+                    <div class="message-avatar" style="background-color: <%= author.avatarColor || '#48d1cc' %>">
+                        <%= author.username.charAt(0).toUpperCase() %>
+                    </div>
+                    <div class="message-content">
+                        <div class="message-header">
+                            <span class="username"><%= author.username %></span>
+                            <span class="timestamp"><%= new Date(message.timestamp).toLocaleString() %></span>
+                        </div>
+                        <div class="message-text">
+                            <%= message.content %>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+        
+        <div class="message-input">
+            <form action="/send-message" method="POST">
+                <input type="hidden" name="channelId" value="<%= currentChannel.id %>">
+                <input type="text" name="content" placeholder="Написать сообщение в #<%= currentChannel.name %>" required>
+                <button type="submit">Отправить</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Модальное окно создания канала -->
+    <div id="create-channel" class="modal">
+        <div class="modal-content">
+            <h2>Создать канал</h2>
+            <form action="/create-channel" method="POST">
+                <input type="hidden" name="serverId" value="<%= server.id %>">
+                <input type="text" name="name" placeholder="Название канала" required>
+                <select name="type">
+                    <option value="text">Текстовый канал</option>
+                    <option value="voice">Голосовой канал</option>
+                </select>
+                <button type="submit" class="btn btn-primary">Создать</button>
+            </form>
+        </div>
+    </div>
+    
+    <script src="/js/app.js"></script>
+</body>
+</html>
