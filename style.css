@@ -20,7 +20,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Whitney', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 body {
@@ -76,27 +76,26 @@ body {
     color: white;
 }
 
-.server-icon.home-server {
+.server-icon.home {
     background-color: var(--accent-color);
     color: white;
 }
 
-.server-icon.home-server img {
-    width: 28px;
-    height: 28px;
+.server-icon.home i {
+    font-size: 18px;
 }
 
-.server-icon.add-server {
+.server-icon.add {
     background-color: var(--secondary-dark);
     color: var(--online-status);
 }
 
-.server-icon.add-server:hover {
+.server-icon.add:hover {
     background-color: var(--online-status);
     color: white;
 }
 
-.server-divider {
+.divider {
     width: 32px;
     height: 2px;
     background-color: rgba(79, 84, 92, 0.48);
@@ -124,11 +123,6 @@ body {
 .server-header h3 {
     font-size: 16px;
     font-weight: 600;
-}
-
-.server-header i {
-    font-size: 14px;
-    color: var(--text-muted);
 }
 
 .channel-category {
@@ -603,7 +597,7 @@ body {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     z-index: 1000;
