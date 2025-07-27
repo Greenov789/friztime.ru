@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcane » Главная</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #ff4d4d; /* Светло-красный */
+            --secondary: #ff9999; /* Светло-розовый */
+            --dark: #0a0a0a; /* Более мягкий черный */
+            --darker: #050505; /* Еще более мягкий черный */
+            --light: #ffffff; /* Белый */
+            --gray: #1a1a1a; /* Серый */
+            --success: #4cc9f0;
+            --danger: #f72585;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--darker);
+            color: var(--light);
+            overflow-x: hidden;
+            border-radius: 10px;
+        }
+        
+        /* Навигация */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 77, 77, 0.3);
+        }
+        
+        nav.scrolled {
+            padding: 0.5rem 5%;
+            background: rgba(10, 10, 10, 0.98);
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo span {
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(255, 77, 77, 0.7);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 77, 77, 0.4);
+        }
+        
+        .btn-primary:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 77, 77, 0.5);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 0 15px rgba(255, 77, 77, 0.5);
+        }
+        
+        .menu-toggle {
+            display: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Герой секция */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, var(--darker), var(--gray));
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 0 10px 10px;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://cdn.discordapp.com/attachments/1329400871011877008/1399031762436362331/15.jpg?ex=6887855c&is=688633dc&hm=32a4515cc559902715fdeecf959ebc5c45b912c4c4a5b94ad45b0aaf7ed05f88&') center/cover no-repeat;
+            opacity: 0.1;
+            z-index: 0;
+            border-radius: 0 0 10px 10px;
+        }
+        
+        .hero-content {
+            width: 50%;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            max-width: 80%;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .hero-image {
+            position: absolute;
+            right: 10%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40%;
+            height: auto;
+            z-index: 1;
+            animation: float 4s ease-in-out infinite;
+            filter: drop-shadow(0 10px 20px rgba(255, 77, 77, 0.5));
+            border-radius: 10px;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(-50%) translateX(0); }
+            50% { transform: translateY(-50%) translateX(-20px); }
+            100% { transform: translateY(-50%) translateX(0); }
+        }
+        
+        /* Секции */
+        section {
+            padding: 5rem 10%;
+            background-color: var(--dark);
+            border-radius: 10px;
+            margin: 10px;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            color: white;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+            box-shadow: 0 0 10px var(--primary);
+        }
+        
+        /* Почему мы */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: rgba(30, 30, 30, 0.7);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 1px solid rgba(255, 77, 77, 0.2);
+            backdrop-filter: blur(5px);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(255, 77, 77, 0.2);
+            border-color: rgba(255, 77, 77, 0.5);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(255, 77, 77, 0.5);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .feature-card p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Подписки */
+        .pricing {
+            background: var(--gray);
+        }
+        
+        .pricing-plans {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .pricing-card {
+            background: rgba(30, 30, 30, 0.8);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 77, 77, 0.2);
+            backdrop-filter: blur(5px);
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(255, 77, 77, 0.3);
+            border-color: rgba(255, 77, 77, 0.5);
+        }
+        
+        .pricing-card.popular::before {
+            content: 'Популярный';
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: var(--primary);
+            color: white;
+            padding: 0.2rem 2rem;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 0 10px var(--primary);
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 10px rgba(255, 77, 77, 0.5);
+        }
+        
+        .price span {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .pricing-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 77, 77, 0.1);
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        /* Галерея изображений */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .gallery-item {
+            height: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 77, 77, 0.3);
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(255, 77, 77, 0.4);
+            border-color: var(--primary);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+            border-radius: 10px;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Видео обзор */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 77, 77, 0.3);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 10px;
+        }
+        
+        /* FAQ */
+        .faq-item {
+            background: rgba(30, 30, 30, 0.7);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 1px solid rgba(255, 77, 77, 0.2);
+            backdrop-filter: blur(5px);
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            color: white;
+        }
+        
+        .faq-question:hover {
+            background: rgba(255, 77, 77, 0.1);
+        }
+        
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            color: var(--primary);
+        }
+        
+        .faq-item.active .faq-question::after {
+            content: '-';
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            padding: 0 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 1.5rem 1.5rem;
+        }
+        
+        /* Соц сети */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(255, 77, 77, 0.4);
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(255, 77, 77, 0.6);
+        }
+        
+        /* Форма загрузки изображений */
+        .image-upload {
+            background: rgba(30, 30, 30, 0.7);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+            border: 1px solid rgba(255, 77, 77, 0.3);
+            backdrop-filter: blur(5px);
+        }
+        
+        .image-upload h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .upload-form {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .upload-form input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: 2px solid rgba(255, 77, 77, 0.3);
+            border-radius: 5px;
+            font-size: 1rem;
+            background: rgba(30, 30, 30, 0.5);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .upload-form input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(255, 77, 77, 0.5);
+        }
+        
+        /* Футер */
+        footer {
+            background: #050505;
+            color: white;
+            padding: 3rem 10%;
+            border-top: 1px solid rgba(255, 77, 77, 0.3);
+            border-radius: 0 0 10px 10px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            color: white;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+        }
+        
+        .footer-column p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Политика конфиденциальности */
+        .policy-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .policy-link {
+            color: var(--secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .policy-link:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+        
+        /* Анимации */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 77, 77, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 77, 77, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 77, 77, 0); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Сообщения */
+        .message {
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            display: none;
+        }
+        
+        .success {
+            background-color: rgba(76, 201, 240, 0.2);
+            color: var(--success);
+            border: 1px solid var(--success);
+            display: block;
+        }
+        
+        .error {
+            background-color: rgba(247, 37, 133, 0.2);
+            color: var(--danger);
+            border: 1px solid var(--danger);
+            display: block;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 992px) {
+            .hero-content {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .hero p {
+                max-width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .hero-image {
+                display: none;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: rgba(10, 10, 10, 0.95);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                transition: all 0.3s ease;
+                backdrop-filter: blur(10px);
+                border-top: 1px solid rgba(255, 77, 77, 0.3);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-buttons {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            section {
+                padding: 3rem 5%;
+            }
+            
+            .upload-form {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .policy-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигация -->
+    <nav id="navbar">
+        <a href="#" class="logo">Arcane<span>Client</span></a>
+        
+        <div class="nav-links" id="navLinks">
+            <a href="#home">Главная</a>
+            <a href="#features">Возможности</a>
+            <a href="#pricing">Подписки</a>
+            <a href="#gallery">Галерея</a>
+            <a href="#video">Обзор</a>
+            <a href="#faq">FAQ</a>
+        </div>
+        
+        <div class="nav-buttons">
+            <button class="btn btn-primary pulse" id="downloadBtn">Скачать сейчас</button>
+        </div>
+        
+        <div class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+    
+    <!-- Герой секция -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>ArcaneClient</h1>
+            <p>Наслаждайтесь каждой минутой игрового процесса с нашим товаром, созданным для вашего комфорта и удовольствия. Он оптимизирован, чтобы сделать Minecraft еще увлекательнее и удобнее, позволяя вам полностью погрузиться в игру без лишних забот.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary pulse" id="download2Btn">Скачать сейчас</button>
+                <button class="btn btn-outline" id="learnMoreBtn">Узнать больше</button>
+            </div>
+        </div>
+        <img src="https://cdn.discordapp.com/attachments/1329400871011877008/1399005505002799176/photo_2025-06-13_05-19-46-Photoroom.png?ex=68876ce8&is=68861b68&hm=3afd65f0703d9adeb1542a5d2a21e11d459814fde10e52e4fa9260ec7d4c4640&" alt="ArcaneClient Preview" class="hero-image">
+    </section>
+    
+    <!-- Почему мы -->
+    <section id="features">
+        <h2 class="section-title">Почему ArcaneClient?</h2>
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3>Максимальный FPS</h3>
+                <p>Оптимизация, которая увеличивает FPS на 30-50% по сравнению с ванильным клиентом.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Безопасность</h3>
+                <p>Наш клиент полностью разрешен на всех популярных серверах</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <h3>Кастомизация</h3>
+                <p>Сотни настроек и параметров для кастомизации вашего игрового опыта.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Подписки -->
+    <section class="pricing" id="pricing">
+        <h2 class="section-title">Наши товары</h2>
+        <div class="pricing-plans">
+            <div class="pricing-card">
+                <h3>Бесплатный</h3>
+                <div class="price">0р <span>/навсегда</span></div>
+                <ul class="pricing-features">
+                    <li>Оптимизация</li>
+                    <li>Базовые визуалы</li>
+                    <li>Поддержка 24/7</li>
+                    <li>Обновления раз в месяц</li>
+                </ul>
+                <button class="btn btn-outline" id="download3Btn">Скачать</button>
+            </div>
+            
+            <div class="pricing-card">
+                <h3>Arcane PLUS</h3>
+                <div class="price">150р <span>/год</span></div>
+                <ul class="pricing-features">
+                    <li>Все базовые функции</li>
+                    <li>Эксклюзивные визуалы</li>
+                    <li>Приоритетная поддержка</li>
+                    <li>Еженедельные обновления</li>
+                    <li>Доступ к бета-версиям</li>
+                </ul>
+                <button class="btn btn-outline" id="buyBtn">Скачать</button>
+            </div>
+            
+            <div class="pricing-card">
+                <h3>Arcane BETA</h3>
+                <div class="price">350р <span>/год</span></div>
+                <ul class="pricing-features">
+                    <li>Все премиум функции</li>
+                    <li>Персональные визуалы</li>
+                    <li>Доступ к бета-версиям</li>
+                    <li>Ежедневные обновления</li>
+                    <li>Ранний доступ к функциям</li>
+                </ul>
+                <button class="btn btn-outline" id="buy2Btn">Скачать</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Галерея изображений -->
+    <section id="gallery">
+        <h2 class="section-title">Галерея</h2>
+        
+        <!-- Форма загрузки изображений -->
+        <div class="image-upload">
+            <h3>Добавить изображение по ссылке</h3>
+            <form class="upload-form" id="imageUploadForm">
+                <input type="url" id="imageUrl" placeholder="Введите URL изображения (например, https://arcane.cc/image.jpg)" required>
+                <button type="submit" class="btn btn-primary">Добавить</button>
+            </form>
+            <div id="uploadMessage" class="message"></div>
+        </div>
+        
+        <div class="gallery" id="imageGallery">
+            <div class="gallery-item">
+                <img src="https://cdn.discordapp.com/attachments/1329400871011877008/1399005505002799176/photo_2025-06-13_05-19-46-Photoroom.png?ex=68876ce8&is=68861b68&hm=3afd65f0703d9adeb1542a5d2a21e11d459814fde10e52e4fa9260ec7d4c4640&" alt="ArcaneClient Interface">
+            </div>
+            <div class="gallery-item">
+                <img src="https://cdn.discordapp.com/attachments/1329400871011877008/1399031762436362331/15.jpg?ex=6887855c&is=688633dc&hm=32a4515cc559902715fdeecf959ebc5c45b912c4c4a5b94ad45b0aaf7ed05f88&" alt="ArcaneClient Features">
+            </div>
+            <div class="gallery-item">
+                <img src="https://media.discordapp.net/attachments/1329400871011877008/1393611387623968778/greenov__1.png?ex=6886eafe&is=6885997e&hm=31488c6724fca67ce0907de1239c44d203a21023ef1c2a3fa713f79bf4b4622d&=&format=webp&quality=lossless&width=229&height=219" alt="ArcaneClient Customization">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Видео обзор -->
+    <section id="video">
+        <h2 class="section-title">Видео обзор</h2>
+        <div class="video-container">
+            <iframe src="https://youtu.be/-CZy9C0C83s?si=sye_koxlfwdiJvsS," frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </section>
+    
+    <!-- FAQ -->
+    <section id="faq">
+        <h2 class="section-title">Частые вопросы</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-question">Как установить ArcaneClient?</div>
+                <div class="faq-answer">
+                    <p>Скачайте набор ресурсов с нашего сайта, запустите его и следуйте инструкциям.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Легален ли наш клиент?</div>
+                <div class="faq-answer">
+                    <p>Да, ArcaneClient полностью легален и не содержит вредоносного кода. Мы используем современные методы шифрования для защиты ваших данных. Наш клиент не нарушает пользовательские соглашения популярных серверов.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Какие игры поддерживаются?</div>
+                <div class="faq-answer">
+                    <p>В настоящее время мы поддерживаем Minecraft (все версии)</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Есть ли бесплатная версия?</div>
+                <div class="faq-answer">
+                    <p>Да, мы предлагаем бесплатную пробный версию для всех новых пользователей.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Соц сети -->
+    <section>
+        <h2 class="section-title">Мы в соцсетях</h2>
+        <div class="social-links">
+            <a href="https://t.me/arcaneclient_be" class="social-link"><i class="fab fa-telegram"></i></a>
+            <a href="https://discord.gg/hDhP5UTzaq" class="social-link"><i class="fab fa-discord"></i></a>
+            <a href="https://www.youtube.com/@greenovblood" class="social-link"><i class="fab fa-youtube"></i></a>
+        </div>
+    </section>
+    
+    <!-- Футер -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>ArcaneClient</h3>
+                <p>Инновационный игровой клиент для настоящих геймеров. Максимальная производительность и уникальные возможности.</p>
+                <p>© 2025 ArcaneClient. Все права защищены.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Ссылки</h3>
+                <ul>
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#features">Возможности</a></li>
+                    <li><a href="#pricing">Подписки</a></li>
+                    <li><a href="#gallery">Галерея</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Контакты</h3>
+                <ul>
+                    <li><a href="mailto:support@arcaneclient.xyz">support@arcaneclient.xyz</a></li>
+                    <li><a href="tel:+1234567890">+7 (918) 518 28-89</a></li>
+                    <li>Техподдержка 24/7</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="policy-links">
+            <a href="https://telegra.ph/Polzovatelskoe-soglashenie--Arcane-07-25" class="policy-link">Пользовательское Соглашение</a>
+            <a href="https://telegra.ph/Politika-konfidencialnosti--Arcane-07-25" class="policy-link">Политика конфидециальности</a>
+            <a href="#" class="policy-link">Политика использования cookie</a>
+        </div>
+        
+        <div class="copyright">
+            <p>© Copyright ArcaneClient </p>
+        </div>
+    </footer>
+    
+    <script>
+        // Меню навигации
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Плавная прокрутка
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                navLinks.classList.remove('active');
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+const LINKS = {
+    buyNow: "https://t.me/greenovvv",
+    buyNow2: "https://t.me/greenovvv",
+    download: "https://t.me/arcaneclient_be",
+    download2: "https://t.me/arcaneclient_be",
+    download3: "https://t.me/arcaneclient_be",
+    login: "https://example.com/login",
+    plans: {
+        basic: "https://example.com/buy?plan=basic",
+        plus: "https://example.com/buy?plan=premium",
+        beta: "https://example.com/buy?plan=pro"
+    }
+};
+
+        // Эффект при скролле
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // FAQ аккордеон
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Закрываем все открытые элементы
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Открываем/закрываем текущий элемент
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Загрузка изображений по URL
+        const imageUploadForm = document.getElementById('imageUploadForm');
+        const imageGallery = document.getElementById('imageGallery');
+        const uploadMessage = document.getElementById('uploadMessage');
+        
+        imageUploadForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const imageUrl = document.getElementById('imageUrl').value.trim();
+            
+            if (!imageUrl) {
+                showMessage('Пожалуйста, введите URL изображения', 'error');
+                return;
+            }
+            
+            // Проверяем, является ли URL изображением
+            if (!isImageUrl(imageUrl)) {
+                showMessage('Пожалуйста, введите корректный URL изображения (jpg, png, gif, webp)', 'error');
+                return;
+            }
+            
+            showMessage('Загрузка изображения...', 'loading');
+            
+            const img = new Image();
+            img.src = imageUrl;
+            img.alt = 'Загруженное изображение';
+            img.loading = 'lazy';
+            
+            img.onload = function() {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.appendChild(img);
+                
+                imageGallery.prepend(galleryItem);
+                showMessage('Изображение успешно добавлено!', 'success');
+                document.getElementById('imageUrl').value = '';
+                
+                // Добавляем анимацию для нового элемента
+                setTimeout(() => {
+                    galleryItem.style.opacity = '1';
+                    galleryItem.style.transform = 'scale(1)';
+                }, 50);
+            };
+            
+            img.onerror = function() {
+                showMessage('Не удалось загрузить изображение. Проверьте URL и доступность изображения.', 'error');
+            };
+        });
+        
+        function isImageUrl(url) {
+            return /\.(jpe?g|png|gif|webp)(\?.*)?$/i.test(url);
+        }
+        
+        function showMessage(text, type) {
+            uploadMessage.textContent = text;
+            uploadMessage.className = 'message';
+            
+            if (type === 'success') {
+                uploadMessage.classList.add('success');
+            } else if (type === 'error') {
+                uploadMessage.classList.add('error');
+            }
+            
+            if (type !== 'loading') {
+                setTimeout(() => {
+                    uploadMessage.textContent = '';
+                    uploadMessage.className = 'message';
+                }, 5000);
+            }
+        }
+        
+        // Обработчики кнопок по умолчанию
+        document.getElementById('learnMoreBtn').addEventListener('click', () => {
+            window.location.href = '#features';
+        });
+        
+// Обработка кликов на кнопках
+document.getElementById("buyBtn").addEventListener("click", () => {
+    window.location.href = LINKS.buyNow;
+});
+
+document.getElementById("buy2Btn").addEventListener("click", () => {
+    window.location.href = LINKS.buyNow2;
+});
+
+document.getElementById("downloadBtn").addEventListener("click", () => {
+    window.location.href = LINKS.download;
+});
+
+document.getElementById("download2Btn").addEventListener("click", () => {
+    window.location.href = LINKS.download2;
+});
+
+document.getElementById("download3Btn").addEventListener("click", () => {
+    window.location.href = LINKS.download3;
+});
+
+document.getElementById("loginBtn").addEventListener("click", () => {
+    window.location.href = LINKS.login;
+});
+
+// Обработка планов (basic, premium, pro)
+document.querySelectorAll(".plan-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+        const planType = btn.getAttribute("data-plan");
+        if (LINKS.plans[planType]) {
+            window.location.href = LINKS.plans[planType];
+        } else {
+            console.error("Такого плана нет:", planType);
+        }
+    });
+});
+
+        // Плавное появление элементов при скролле
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.feature-card, .pricing-card, .gallery-item, .faq-item');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Установка начальных стилей для анимации
+        document.querySelectorAll('.feature-card, .pricing-card, .gallery-item, .faq-item').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'all 0.6s ease';
+        });
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
