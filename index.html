@@ -3,1089 +3,613 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arcane » Главная</title>
+    <title>FrizTime - Кровавый сервер | Minecraft</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary: #ff4d4d; /* Светло-красный */
-            --secondary: #ff9999; /* Светло-розовый */
-            --dark: #0a0a0a; /* Более мягкий черный */
-            --darker: #050505; /* Еще более мягкий черный */
-            --light: #ffffff; /* Белый */
-            --gray: #1a1a1a; /* Серый */
-            --success: #4cc9f0;
-            --danger: #f72585;
-        }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
-        body {
-            background-color: var(--darker);
-            color: var(--light);
-            overflow-x: hidden;
-            border-radius: 10px;
+
+        :root {
+            --primary: #8B0000;
+            --secondary: #1a1a1a;
+            --accent: #FF0000;
+            --text: #f0f0f0;
+            --dark-text: #b0b0b0;
         }
-        
-        /* Навигация */
-        nav {
+
+        body {
+            background-color: var(--secondary);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(26,26,26,0.7));
+            padding: 20px 5%;
             position: fixed;
-            top: 0;
-            left: 0;
             width: 100%;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 5%;
+            z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 1000;
-            transition: all 0.3s ease;
-            border-bottom: 1px solid rgba(255, 77, 77, 0.3);
+            border-bottom: 2px solid var(--primary);
         }
-        
-        nav.scrolled {
-            padding: 0.5rem 5%;
-            background: rgba(10, 10, 10, 0.98);
-        }
-        
+
         .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: white;
-            text-decoration: none;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-        }
-        
-        .logo:hover {
-            transform: scale(1.05);
-        }
-        
-        .logo span {
-            color: var(--primary);
-            text-shadow: 0 0 10px rgba(255, 77, 77, 0.7);
-        }
-        
-        .nav-links {
             display: flex;
-            gap: 2rem;
+            align-items: center;
+            gap: 15px;
         }
-        
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-            letter-spacing: 0.5px;
-        }
-        
-        .nav-links a:hover {
-            color: var(--secondary);
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        .nav-buttons {
+
+        .logo-img {
+            height: 60px;
+            width: 60px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            border-radius: 50%;
             display: flex;
-            gap: 1rem;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 24px;
+            color: var(--text);
+            border: 2px solid var(--text);
+            box-shadow: 0 0 15px var(--accent);
         }
-        
-        .btn {
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            border: none;
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: bold;
+            text-shadow: 0 0 10px var(--accent);
+            color: var(--text);
+        }
+
+        .server-name {
+            font-size: 14px;
+            color: var(--dark-text);
+            margin-top: 5px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 18px;
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            letter-spacing: 0.5px;
+            transition: all 0.3s;
+            padding: 5px 10px;
+            border-radius: 5px;
         }
-        
+
+        nav a:hover {
+            color: var(--accent);
+            text-shadow: 0 0 10px var(--accent);
+            background: rgba(139, 0, 0, 0.2);
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            font-size: 16px;
+        }
+
         .btn-primary {
             background: var(--primary);
-            color: white;
-            box-shadow: 0 4px 15px rgba(255, 77, 77, 0.4);
+            color: var(--text);
         }
-        
+
         .btn-primary:hover {
-            background: var(--secondary);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255, 77, 77, 0.5);
+            background: var(--accent);
+            box-shadow: 0 0 15px var(--accent);
         }
-        
-        .btn-outline {
+
+        .btn-secondary {
             background: transparent;
-            color: white;
+            color: var(--text);
             border: 2px solid var(--primary);
         }
-        
-        .btn-outline:hover {
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 0 15px rgba(255, 77, 77, 0.5);
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 15px var(--accent);
         }
-        
-        .menu-toggle {
-            display: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        /* Герой секция */
+
+        /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(135deg, var(--darker), var(--gray));
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1531315630201-bb15abeb1653?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
             display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
+            text-align: center;
             padding: 0 10%;
-            position: relative;
-            overflow: hidden;
-            border-radius: 0 0 10px 10px;
         }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://cdn.discordapp.com/attachments/1371495229344976916/1401261126368628868/15.jpg?ex=6896391e&is=6894e79e&hm=21eb70904862dbbafec0dbe9a3f5a92194444f8d8374a45171c0a45f2da6971a&') center/cover no-repeat;
-            opacity: 0.1;
-            z-index: 0;
-            border-radius: 0 0 10px 10px;
-        }
-        
-        .hero-content {
-            width: 50%;
-            z-index: 2;
-        }
-        
+
         .hero h1 {
-            font-size: 3.5rem;
-            color: white;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px var(--accent);
+            color: var(--text);
         }
-        
+
         .hero p {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 2rem;
-            max-width: 80%;
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin-bottom: 30px;
+            color: var(--dark-text);
         }
-        
+
         .hero-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 20px;
+            margin-top: 20px;
         }
-        
-        .hero-image {
-            position: absolute;
-            right: 10%;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 40%;
-            height: auto;
-            z-index: 1;
-            animation: float 4s ease-in-out infinite;
-            filter: drop-shadow(0 10px 20px rgba(255, 77, 77, 0.5));
-            border-radius: 10px;
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(-50%) translateX(0); }
-            50% { transform: translateY(-50%) translateX(-20px); }
-            100% { transform: translateY(-50%) translateX(0); }
-        }
-        
-        /* Секции */
-        section {
-            padding: 5rem 10%;
-            background-color: var(--dark);
-            border-radius: 10px;
-            margin: 10px;
-        }
-        
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-            color: white;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: var(--primary);
-            border-radius: 2px;
-            box-shadow: 0 0 10px var(--primary);
-        }
-        
-        /* Почему мы */
+
+        /* Features Section */
         .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            padding: 100px 5%;
+            background-color: var(--secondary);
         }
-        
-        .feature-card {
-            background: rgba(30, 30, 30, 0.7);
-            border-radius: 10px;
-            padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+
+        .section-title {
             text-align: center;
-            border: 1px solid rgba(255, 77, 77, 0.2);
-            backdrop-filter: blur(5px);
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-shadow: 0 0 10px var(--primary);
         }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(255, 77, 77, 0.2);
-            border-color: rgba(255, 77, 77, 0.5);
-        }
-        
-        .feature-icon {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            text-shadow: 0 0 10px rgba(255, 77, 77, 0.5);
-        }
-        
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: white;
-        }
-        
-        .feature-card p {
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
-        /* Подписки */
-        .pricing {
-            background: var(--gray);
-        }
-        
-        .pricing-plans {
+
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: 30px;
         }
-        
-        .pricing-card {
+
+        .feature-card {
             background: rgba(30, 30, 30, 0.8);
             border-radius: 10px;
-            padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
             text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(255, 77, 77, 0.2);
-            backdrop-filter: blur(5px);
+            transition: transform 0.3s;
+            border: 1px solid rgba(139, 0, 0, 0.3);
         }
-        
-        .pricing-card:hover {
+
+        .feature-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(255, 77, 77, 0.3);
-            border-color: rgba(255, 77, 77, 0.5);
+            border-color: var(--accent);
+            box-shadow: 0 10px 20px rgba(255, 0, 0, 0.2);
         }
-        
-        .pricing-card.popular::before {
-            content: 'Популярный';
-            position: absolute;
-            top: 15px;
-            right: -30px;
-            background: var(--primary);
-            color: white;
-            padding: 0.2rem 2rem;
-            transform: rotate(45deg);
-            font-size: 0.8rem;
-            font-weight: 600;
-            box-shadow: 0 0 10px var(--primary);
-        }
-        
-        .pricing-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: white;
-        }
-        
-        .price {
-            font-size: 3rem;
-            font-weight: 700;
+
+        .feature-icon {
+            font-size: 50px;
             color: var(--primary);
-            margin-bottom: 1.5rem;
-            text-shadow: 0 0 10px rgba(255, 77, 77, 0.5);
+            margin-bottom: 20px;
         }
-        
-        .price span {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.7);
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text);
         }
-        
-        .pricing-features {
-            list-style: none;
-            margin-bottom: 2rem;
+
+        .feature-card p {
+            color: var(--dark-text);
+            line-height: 1.6;
         }
-        
-        .pricing-features li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(255, 77, 77, 0.1);
-            color: rgba(255, 255, 255, 0.8);
+
+        /* Server Info Section */
+        .server-info {
+            padding: 100px 5%;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-attachment: fixed;
         }
-        
-        /* Наши ютуберы */
-        .youtubers {
+
+        .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
         }
-        
-        .youtuber-card {
-            background: rgba(30, 30, 30, 0.7);
+
+        .info-card {
+            background: rgba(30, 30, 30, 0.9);
+            padding: 30px;
             border-radius: 10px;
-            padding: 1.5rem;
             text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 77, 77, 0.2);
-            backdrop-filter: blur(5px);
+            border-left: 5px solid var(--primary);
         }
-        
-        .youtuber-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(255, 77, 77, 0.3);
-            border-color: rgba(255, 77, 77, 0.5);
+
+        .info-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--text);
         }
-        
-        .youtuber-avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 0 auto 1rem;
-            border: 3px solid var(--primary);
-            box-shadow: 0 0 15px rgba(255, 77, 77, 0.5);
+
+        .info-card p {
+            color: var(--dark-text);
+            font-size: 1.1rem;
         }
-        
-        .youtuber-name {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: white;
+
+        /* Gallery Section */
+        .gallery {
+            padding: 100px 5%;
+            background-color: var(--secondary);
         }
-        
-        .youtuber-subscribers {
-            color: var(--secondary);
-            margin-bottom: 1rem;
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
         }
-        
-        .youtuber-link {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background: var(--primary);
-            color: white;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .youtuber-link:hover {
-            background: var(--secondary);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255, 77, 77, 0.4);
-        }
-        
-        /* Видео обзор */
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 */
-            height: 0;
-            overflow: hidden;
+
+        .gallery-item {
+            height: 250px;
             border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 77, 77, 0.3);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
         }
-        
-        .video-container iframe {
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item::after {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            border: none;
-            border-radius: 10px;
+            background: linear-gradient(to bottom, transparent, rgba(139, 0, 0, 0.7));
+            opacity: 0;
+            transition: opacity 0.3s;
         }
-        
-        /* FAQ */
-        .faq-item {
-            background: rgba(30, 30, 30, 0.7);
-            border-radius: 10px;
-            margin-bottom: 1rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            border: 1px solid rgba(255, 77, 77, 0.2);
-            backdrop-filter: blur(5px);
+
+        .gallery-item:hover::after {
+            opacity: 1;
         }
-        
-        .faq-question {
-            padding: 1.5rem;
-            font-size: 1.2rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s ease;
-            color: white;
-        }
-        
-        .faq-question:hover {
-            background: rgba(255, 77, 77, 0.1);
-        }
-        
-        .faq-question::after {
-            content: '+';
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-            color: var(--primary);
-        }
-        
-        .faq-item.active .faq-question::after {
-            content: '-';
-        }
-        
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            padding: 0 1.5rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-        
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-            padding: 0 1.5rem 1.5rem;
-        }
-        
-        /* Соц сети */
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .social-link {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            box-shadow: 0 4px 10px rgba(255, 77, 77, 0.4);
-        }
-        
-        .social-link:hover {
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 10px 20px rgba(255, 77, 77, 0.6);
-        }
-        
-        /* Футер */
+
+        /* Footer */
         footer {
-            background: #050505;
-            color: white;
-            padding: 3rem 10%;
-            border-top: 1px solid rgba(255, 77, 77, 0.3);
-            border-radius: 0 0 10px 10px;
+            background: #111;
+            padding: 50px 5% 20px;
+            border-top: 2px solid var(--primary);
         }
-        
+
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            gap: 40px;
+            margin-bottom: 30px;
         }
-        
-        .footer-column h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            color: white;
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
         }
-        
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
+
+        .footer-logo .logo-img {
+            height: 50px;
             width: 50px;
-            height: 3px;
-            background: var(--primary);
-            box-shadow: 0 0 10px var(--primary);
+            font-size: 20px;
         }
-        
-        .footer-column p {
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 1rem;
+
+        .footer-logo .logo-text {
+            font-size: 24px;
         }
-        
-        .footer-column ul {
+
+        .footer-links h3, .footer-social h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+
+        .footer-links ul {
             list-style: none;
         }
-        
-        .footer-column ul li {
-            margin-bottom: 0.8rem;
+
+        .footer-links li {
+            margin-bottom: 10px;
         }
-        
-        .footer-column ul li a {
-            color: #ddd;
+
+        .footer-links a {
+            color: var(--dark-text);
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: color 0.3s;
         }
-        
-        .footer-column ul li a:hover {
-            color: var(--secondary);
-            padding-left: 5px;
+
+        .footer-links a:hover {
+            color: var(--accent);
         }
-        
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 50%;
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+
         .copyright {
             text-align: center;
-            padding-top: 2rem;
-            margin-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.5);
-        }
-        
-        /* Политика конфиденциальности */
-        .policy-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-        
-        .policy-link {
-            color: var(--secondary);
-            text-decoration: none;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--dark-text);
             font-size: 0.9rem;
-            transition: all 0.3s ease;
         }
-        
-        .policy-link:hover {
-            color: var(--primary);
-            text-decoration: underline;
-        }
-        
-        /* Анимации */
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255, 77, 77, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(255, 77, 77, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 77, 77, 0); }
-        }
-        
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-        
-        /* Сообщения */
-        .message {
-            padding: 10px 15px;
-            border-radius: 5px;
-            margin-top: 10px;
-            display: none;
-        }
-        
-        .success {
-            background-color: rgba(76, 201, 240, 0.2);
-            color: var(--success);
-            border: 1px solid var(--success);
-            display: block;
-        }
-        
-        .error {
-            background-color: rgba(247, 37, 133, 0.2);
-            color: var(--danger);
-            border: 1px solid var(--danger);
-            display: block;
-        }
-        
-        /* Адаптивность */
-        @media (max-width: 992px) {
-            .hero-content {
-                width: 100%;
-                text-align: center;
-            }
-            
-            .hero p {
-                max-width: 100%;
-                margin-left: auto;
-                margin-right: auto;
-            }
-            
-            .hero-image {
-                display: none;
-            }
-            
-            .hero-buttons {
-                justify-content: center;
-            }
-        }
-        
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-            
-            .nav-links {
-                position: fixed;
-                top: 70px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 70px);
-                background: rgba(10, 10, 10, 0.95);
+            header {
                 flex-direction: column;
-                align-items: center;
-                padding: 2rem 0;
-                transition: all 0.3s ease;
-                backdrop-filter: blur(10px);
-                border-top: 1px solid rgba(255, 77, 77, 0.3);
+                padding: 15px 5%;
             }
             
-            .nav-links.active {
-                left: 0;
+            .logo {
+                margin-bottom: 15px;
             }
             
-            .nav-buttons {
-                display: none;
+            nav ul {
+                gap: 15px;
+                margin: 15px 0;
+            }
+            
+            .header-buttons {
+                margin-top: 15px;
             }
             
             .hero h1 {
                 font-size: 2.5rem;
             }
             
-            section {
-                padding: 3rem 5%;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
             .hero p {
-                font-size: 1rem;
+                font-size: 1.2rem;
             }
             
             .hero-buttons {
                 flex-direction: column;
-            }
-            
-            .btn {
-                width: 100%;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .policy-links {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
+                gap: 10px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Навигация -->
-    <nav id="navbar">
-        <a href="#" class="logo">Arcane<span>Client</span></a>
-        
-        <div class="nav-links" id="navLinks">
-            <a href="#home">Главная</a>
-            <a href="#features">Возможности</a>
-            <a href="#pricing">Подписки</a>
-            <a href="#youtubers">Партнеры</a>
-            <a href="#video">Обзор</a>
-            <a href="#faq">FAQ</a>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <div class="logo-img">В</div>
+            <div>
+                <div class="logo-text">ВАМПИРЫ</div>
+                <div class="server-name">FrizTime - Кровавый сервер</div>
+            </div>
         </div>
         
-        <div class="nav-buttons">
-            <button class="btn btn-primary pulse" id="downloadBtn">Скачать сейчас</button>
-        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#features">Особенности</a></li>
+                <li><a href="#info">О сервере</a></li>
+                <li><a href="#gallery">Галерея</a></li>
+            </ul>
+        </nav>
         
-        <div class="menu-toggle" id="menuToggle">
-            <i class="fas fa-bars"></i>
+        <div class="header-buttons">
+            <button class="btn btn-primary">Играть сейчас</button>
+            <button class="btn btn-secondary">Дискорд</button>
         </div>
-    </nav>
-    
-    <!-- Герой секция -->
+    </header>
+
+    <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>ArcaneClient</h1>
-            <p>Наслаждайтесь каждой минутой игрового процесса с нашим товаром, созданным для вашего комфорта и удовольствия. Он оптимизирован, чтобы сделать Minecraft еще увлекательнее и удобнее, позволяя вам полностью погрузиться в игру без лишних забот.</p>
-            <div class="hero-buttons">
-                <button class="btn btn-primary pulse" id="download2Btn">Скачать сейчас</button>
-                <button class="btn btn-outline" id="learnMoreBtn">Узнать больше</button>
-            </div>
+        <h1>FrizTime - Кровавый сервер</h1>
+        <p>Присоединяйся к уникальному миру вампиров в Minecraft! Охоться, выживай и становись самым могущественным вампиром на сервере.</p>
+        <div class="hero-buttons">
+            <button class="btn btn-primary">Присоединиться</button>
+            <button class="btn btn-secondary">Узнать больше</button>
         </div>
-        <img src="https://cdn.discordapp.com/attachments/1329400871011877008/1399005505002799176/photo_2025-06-13_05-19-46-Photoroom.png?ex=68876ce8&is=68861b68&hm=3afd65f0703d9adeb1542a5d2a21e11d459814fde10e52e4fa9260ec7d4c4640&" alt="ArcaneClient Preview" class="hero-image">
     </section>
-    
-    <!-- Почему мы -->
-    <section id="features">
-        <h2 class="section-title">Почему ArcaneClient?</h2>
-        <div class="features">
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2 class="section-title">Уникальные возможности</h2>
+        <div class="features-grid">
             <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-rocket"></i>
-                </div>
-                <h3>Максимальный FPS</h3>
-                <p>Оптимизация, которая увеличивает FPS на 30-50% по сравнению с ванильным клиентом.</p>
+                <div class="feature-icon"><i class="fas fa-moon"></i></div>
+                <h3>Ночная охота</h3>
+                <p>Стань настоящим вампиром и охотись на игроков в ночное время. Увеличивай свою силу с каждой успешной охотой.</p>
             </div>
-            
             <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <h3>Безопасность</h3>
-                <p>Наш клиент полностью разрешен на всех популярных серверах</p>
+                <div class="feature-icon"><i class="fas fa-skull"></i></div>
+                <h3>Клановая система</h3>
+                <p>Создавай или присоединяйся к кланам вампиров. Сражайся за территории и доминируй над другими кланами.</p>
             </div>
-            
             <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-paint-brush"></i>
-                </div>
-                <h3>Кастомизация</h3>
-                <p>Сотни настроек и параметров для кастомизации вашего игрового опыта.</p>
+                <div class="feature-icon"><i class="fas fa-fire"></i></div>
+                <h3>Магия крови</h3>
+                <p>Изучай древние заклинания крови и получай могущественные способности, недоступные простым смертным.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3>Защита от солнца</h3>
+                <p>Строй укрытия и находи способы защититься от солнечного света, который ослабляет вампиров.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-gem"></i></div>
+                <h3>Редкие артефакты</h3>
+                <p>Находи древние артефакты, которые даруют уникальные способности и усиливают твои вампирские силы.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-trophy"></i></div>
+                <h3>Соревнования</h3>
+                <p>Участвуй в еженедельных событиях и турнирах, чтобы доказать, что ты - сильнейший вампир на сервере.</p>
             </div>
         </div>
     </section>
-    
-    <!-- Подписки -->
-    <section class="pricing" id="pricing">
-        <h2 class="section-title">Наши товары</h2>
-        <div class="pricing-plans">
-            <div class="pricing-card">
-                <h3>Бесплатный</h3>
-                <div class="price">0р <span>/навсегда</span></div>
-                <ul class="pricing-features">
-                    <li>Оптимизация</li>
-                    <li>Базовые визуалы</li>
-                    <li>Поддержка 24/7</li>
-                    <li>Обновления раз в неделю</li>
-                </ul>
-                <button class="btn btn-outline" id="download3Btn">Скачать</button>
+
+    <!-- Server Info Section -->
+    <section class="server-info" id="info">
+        <h2 class="section-title">О нашем сервере</h2>
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>IP Адрес</h3>
+                <p>play.friztime-vampires.ru</p>
             </div>
-            
-            <div class="pricing-card">
-                <h3>Arcane BETA</h3>
-                <div class="price">150р <span>/30d</span></div>
-                <ul class="pricing-features">
-                    <li>Все базовые функции</li>
-                    <li>Эксклюзивные визуалы</li>
-                    <li>Приоритетная поддержка</li>
-                    <li>Еженедельные обновления</li>
-                    <li>Доступ к бета-версиям</li>
-                </ul>
-                <button class="btn btn-outline" id="buyBtn">Купить</button>
+            <div class="info-card">
+                <h3>Версия</h3>
+                <p>Minecraft 1.19.2</p>
             </div>
-            
-            <div class="pricing-card">
-                <h3>Arcane BETA</h3>
-                <div class="price">350р <span>/365d</span></div>
-                <ul class="pricing-features">
-                    <li>Все премиум функции</li>
-                    <li>Персональные визуалы</li>
-                    <li>Доступ к бета-версиям</li>
-                    <li>Ежедневные обновления</li>
-                    <li>Ранний доступ к функциям</li>
-                </ul>
-                <button class="btn btn-outline" id="buy2Btn">Купить</button>
+            <div class="info-card">
+                <h3>Онлайн</h3>
+                <p>150+ игроков ежедневно</p>
+            </div>
+            <div class="info-card">
+                <h3>Режим</h3>
+                <p>Вампиры + Выживание</p>
             </div>
         </div>
     </section>
-    
-    <!-- Наши ютуберы -->
-    <section id="youtubers">
-        <h2 class="section-title">Наши партнеры</h2>
-        <div class="youtubers">
-            <div class="youtuber-card">
-                <img src="https://cdn.discordapp.com/attachments/1371495229344976916/1403116087574401164/2024-07-22_221238.png?ex=6896612f&is=68950faf&hm=b387ad63e2ded6a844a4d8891f0ff96f911978d7626c442919ab30cbfbb84554&" alt="" class="youtuber-avatar">
-                <h3 class="youtuber-name">Greenov</h3>
-                <p class="youtuber-subscribers">5K+ подписчиков</p>
-                <a href="https://www.tiktok.com/@greenovfame?_t=ZP-8yfAO7pDdVP&_r=1" class="youtuber-link" target="_blank">Перейти</a>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <h2 class="section-title">Галерея сервера</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1563089145-599997674d42?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Вампирский замок">
             </div>
-            
-            <div class="youtuber-card">
-                <img src="https://cdn.discordapp.com/attachments/1371495229344976916/1402786284748931243/2024-07-23_183250.png?ex=68952e08&is=6893dc88&hm=d5be535492b50bbedac8fab23e7272681883355995c3032a8cb7aa552bc75fcf&" alt="" class="youtuber-avatar">
-                <h3 class="youtuber-name">HyDix</h3>
-                <p class="youtuber-subscribers">1.5K+ подписчиков</p>
-                <a href="https://www.youtube.com/@wakerzyoutube23" class="youtuber-link" target="_blank">Перейти</a>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1633617477271-d4f351ff7c7c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ночная охота">
             </div>
-        </div>
-    </section>
-    
-    <!-- Видео обзор -->
-    <section id="video">
-        <h2 class="section-title">Видео обзор</h2>
-        <div class="video-container">
-            <iframe src="https://youtu.be/-CZy9C0C83s?si=sye_koxlfwdiJvsS," frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-    </section>
-    
-    <!-- FAQ -->
-    <section id="faq">
-        <h2 class="section-title">Частые вопросы</h2>
-        <div class="faq-list">
-            <div class="faq-item">
-                <div class="faq-question">Как установить ArcaneClient?</div>
-                <div class="faq-answer">
-                    <p>Скачайте набор ресурсов с нашего сайта, запустите его и следуйте инструкциям.</p>
-                </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1586810723182-6e3e13c6c54e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Клановая битва">
             </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">Легален ли наш клиент?</div>
-                <div class="faq-answer">
-                    <p>Да, ArcaneClient полностью легален и не содержит вредоносного кода. Мы используем современные методы шифрования для защиты ваших данных. Наш клиент не нарушает пользовательские соглашения популярных серверов.</p>
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">Какие игры поддерживаются?</div>
-                <div class="faq-answer">
-                    <p>В настоящее время мы поддерживаем Minecraft (все версии)</p>
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">Есть ли бесплатная версия?</div>
-                <div class="faq-answer">
-                    <p>Да, мы предлагаем бесплатную пробный версию для всех новых пользователей.</p>
-                </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Вампирские артефакты">
             </div>
         </div>
     </section>
-    
-    <!-- Соц сети -->
-    <section>
-        <h2 class="section-title">Мы в соцсетях</h2>
-        <div class="social-links">
-            <a href="https://t.me/arcaneclient_be" class="social-link"><i class="fab fa-telegram"></i></a>
-            <a href="https://discord.gg/hDhP5UTzaq" class="social-link"><i class="fab fa-discord"></i></a>
-            <a href="https://www.youtube.com/@greenovblood" class="social-link"><i class="fab fa-youtube"></i></a>
-        </div>
-    </section>
-    
-    <!-- Футер -->
+
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="footer-column">
-                <h3>ArcaneClient</h3>
-                <p>Инновационный игровой клиент для настоящих геймеров. Максимальная производительность и уникальные возможности.</p>
-                <p>© 2025 ArcaneClient. Все права защищены.</p>
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <div class="logo-img">В</div>
+                    <div class="logo-text">ВАМПИРЫ</div>
+                </div>
+                <p>FrizTime - Кровавый сервер предлагает уникальный геймплей в мире Minecraft с вампирской тематикой. Присоединяйся к нашему сообществу!</p>
             </div>
             
-            <div class="footer-column">
-                <h3>Ссылки</h3>
+            <div class="footer-links">
+                <h3>Быстрые ссылки</h3>
                 <ul>
                     <li><a href="#home">Главная</a></li>
-                    <li><a href="#features">Возможности</a></li>
-                    <li><a href="#pricing">Подписки</a></li>
-                    <li><a href="#youtubers">Наши ютуберы</a></li>
-                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#features">Особенности</a></li>
+                    <li><a href="#info">О сервере</a></li>
+                    <li><a href="#gallery">Галерея</a></li>
                 </ul>
             </div>
             
-            <div class="footer-column">
-                <h3>Контакты</h3>
-                <ul>
-                    <li><a href="mailto:support@arcaneclient.xyz">support@arcaneclient.xyz</a></li>
-                    <li><a href="tel:+1234567890">+7 (918) 518 28-89</a></li>
-                    <li>Техподдержка 24/7</li>
-                </ul>
+            <div class="footer-social">
+                <h3>Мы в соцсетях</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-vk"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                </div>
             </div>
-        </div>
-        
-        <div class="policy-links">
-            <a href="https://telegra.ph/Polzovatelskoe-soglashenie--Arcane-07-25" class="policy-link">Пользовательское Соглашение</a>
-            <a href="https://telegra.ph/Politika-konfidencialnosti--Arcane-07-25" class="policy-link">Политика конфидециальности</a>
-            <a href="#" class="policy-link">Политика использования cookie</a>
         </div>
         
         <div class="copyright">
-            <p>© Copyright ArcaneClient </p>
+            <p>&copy; 2023 FrizTime - Кровавый сервер. Все права защищены.</p>
         </div>
     </footer>
-    
+
     <script>
-        // Меню навигации
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-        
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-        
-        // Плавная прокрутка
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        // Плавная прокрутка для навигационных ссылок
+        document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 
-                navLinks.classList.remove('active');
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
                 
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
                     behavior: 'smooth'
                 });
             });
         });
-        
-const LINKS = {
-    buyNow: "https://t.me/greenovvv",
-    buyNow2: "https://t.me/greenovvv",
-    download: "https://workupload.com/archive/b9cftfKMdK",
-    download2: "https://workupload.com/archive/b9cftfKMdK",
-    download3: "https://workupload.com/archive/b9cftfKMdK",
-    login: "https://example.com/login",
-    plans: {
-        basic: "https://example.com/buy?plan=basic",
-        plus: "https://example.com/buy?plan=premium",
-        beta: "https://example.com/buy?plan=pro"
-    }
-};
 
-        // Эффект при скролле
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-        
-        // FAQ аккордеон
-        const faqItems = document.querySelectorAll('.faq-item');
-        
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            
-            question.addEventListener('click', () => {
-                // Закрываем все открытые элементы
-                faqItems.forEach(otherItem => {
-                    if (otherItem !== item && otherItem.classList.contains('active')) {
-                        otherItem.classList.remove('active');
-                    }
-                });
-                
-                // Открываем/закрываем текущий элемент
-                item.classList.toggle('active');
-            });
-        });
-        
-        // Обработчики кнопок по умолчанию
-        document.getElementById('learnMoreBtn').addEventListener('click', () => {
-            window.location.href = '#features';
-        });
-        
-// Обработка кликов на кнопках
-document.getElementById("buyBtn").addEventListener("click", () => {
-    window.location.href = LINKS.buyNow;
-});
+        // Анимация появления элементов при прокрутке
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-document.getElementById("buy2Btn").addEventListener("click", () => {
-    window.location.href = LINKS.buyNow2;
-});
-
-document.getElementById("downloadBtn").addEventListener("click", () => {
-    window.location.href = LINKS.download;
-});
-
-document.getElementById("download2Btn").addEventListener("click", () => {
-    window.location.href = LINKS.download2;
-});
-
-document.getElementById("download3Btn").addEventListener("click", () => {
-    window.location.href = LINKS.download3;
-});
-
-document.getElementById("loginBtn").addEventListener("click", () => {
-    window.location.href = LINKS.login;
-});
-
-// Обработка планов (basic, premium, pro)
-document.querySelectorAll(".plan-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-        const planType = btn.getAttribute("data-plan");
-        if (LINKS.plans[planType]) {
-            window.location.href = LINKS.plans[planType];
-        } else {
-            console.error("Такого плана нет:", planType);
-        }
-    });
-});
-
-        // Плавное появление элементов при скролле
-        const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.feature-card, .pricing-card, .youtuber-card, .faq-item');
-            
-            elements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
-                const screenPosition = window.innerHeight / 1.3;
-                
-                if (elementPosition < screenPosition) {
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
                 }
             });
-        };
-        
-        // Установка начальных стилей для анимации
-        document.querySelectorAll('.feature-card, .pricing-card, .youtuber-card, .faq-item').forEach(element => {
-            element.style.opacity = '0';
-            element.style.transform = 'translateY(20px)';
-            element.style.transition = 'all 0.6s ease';
+        }, observerOptions);
+
+        // Применяем анимацию к карточкам
+        document.querySelectorAll('.feature-card, .info-card, .gallery-item').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s, transform 0.5s';
+            observer.observe(el);
         });
-        
-        window.addEventListener('scroll', animateOnScroll);
-        window.addEventListener('load', animateOnScroll);
     </script>
 </body>
 </html>
