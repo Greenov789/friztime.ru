@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FRIZTIME — HvH Анархия</title>
-    <link href="./FRIZMINE — Оплата_files/css2" rel="stylesheet">
     <style>
         :root{
-            --bg-1:#0e0017;
-            --bg-2:#20052f;
-            --bg-3:#2a0b42;
+            --bg-1:#0e0000;
+            --bg-2:#200505;
+            --bg-3:#2a0b0b;
             --glass:rgba(255,255,255,.06);
             --stroke:rgba(255,255,255,.08);
-            --text:#e9e7ff;
-            --muted:#b5a9ff;
-            --accent-1:#8b5cf6;
-            --accent-2:#a855f7;
-            --accent-3:#ec38ff;
+            --text:#ffe7e7;
+            --muted:#ffa9a9;
+            --accent-1:#f65c5c;
+            --accent-2:#f75555;
+            --accent-3:#ff3838;
             --shadow:0 30px 80px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.06);
             --radius:22px;
             --blur:14px;
@@ -27,9 +27,9 @@
             font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
             color:var(--text);
             background:
-                    radial-gradient(1200px 600px at 15% 20%, #3d0d64 0%, transparent 60%),
-                    radial-gradient(900px 500px at 85% 0%, #4b0f79 0%, transparent 60%),
-                    radial-gradient(1100px 700px at 50% 110%, #2d0e49 0%, transparent 60%),
+                    radial-gradient(1200px 600px at 15% 20%, #640d0d 0%, transparent 60%),
+                    radial-gradient(900px 500px at 85% 0%, #790f0f 0%, transparent 60%),
+                    radial-gradient(1100px 700px at 50% 110%, #490e0e 0%, transparent 60%),
                     linear-gradient(160deg,var(--bg-1),var(--bg-2) 40%, var(--bg-3) 100%);
             overflow-x:hidden;
         }
@@ -53,8 +53,8 @@
         }
         .glow{
             position:absolute; inset:-2px;
-            background:radial-gradient(600px 200px at 20% 0%, rgba(168,85,247,.18), transparent 60%),
-            radial-gradient(500px 300px at 90% 30%, rgba(236,56,255,.16), transparent 60%);
+            background:radial-gradient(600px 200px at 20% 0%, rgba(247,85,85,.18), transparent 60%),
+            radial-gradient(500px 300px at 90% 30%, rgba(255,56,56,.16), transparent 60%);
             filter:blur(40px);
             z-index:-1;
         }
@@ -68,7 +68,7 @@
         .logo{
             width:44px; height:44px; border-radius:14px;
             background:conic-gradient(from 180deg, var(--accent-1), var(--accent-2), var(--accent-3), var(--accent-1));
-            box-shadow:0 10px 30px rgba(168,85,247,.45);
+            box-shadow:0 10px 30px rgba(247,85,85,.45);
             display:grid; place-items:center;
             flex:0 0 auto;
         }
@@ -83,7 +83,7 @@
             box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
             transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease;
         }
-        .link:hover{transform:translateY(-1px); border-color:rgba(168,85,247,.45); box-shadow:0 8px 26px rgba(114,63,196,.35)}
+        .link:hover{transform:translateY(-1px); border-color:rgba(247,85,85,.45); box-shadow:0 8px 26px rgba(196,63,63,.35)}
         .link svg{width:18px;height:18px}
         .content{padding:22px 6px 8px}
         .title{font-size:26px;font-weight:800;margin:0 0 16px}
@@ -95,7 +95,7 @@
             text-decoration:none; color:var(--text); font-weight:800; letter-spacing:.2px;
             background:
                     linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02)),
-                    radial-gradient(120% 220% at 0% 0%, rgba(139,92,246,.25), transparent 50%);
+                    radial-gradient(120% 220% at 0% 0%, rgba(246,92,92,.25), transparent 50%);
             box-shadow:0 14px 40px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.06);
             transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
             overflow:hidden;
@@ -103,24 +103,24 @@
         .btn::after{
             content:"";
             position:absolute; inset:-1px;
-            background:radial-gradient(500px 120px at 50% -20%, rgba(236,56,255,.2), transparent 60%);
+            background:radial-gradient(500px 120px at 50% -20%, rgba(255,56,56,.2), transparent 60%);
             opacity:.0; transition:opacity .2s ease;
             border-radius:inherit; pointer-events:none;
         }
-        .btn:hover{transform:translateY(-2px); border-color:rgba(168,85,247,.45); box-shadow:0 20px 60px rgba(114,63,196,.45)}
+        .btn:hover{transform:translateY(-2px); border-color:rgba(247,85,85,.45); box-shadow:0 20px 60px rgba(196,63,63,.45)}
         .btn:hover::after{opacity:1}
         .btn svg{width:22px;height:22px;opacity:.95}
         .btn.rf{
             background:
                     linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02)),
-                    radial-gradient(140% 240% at 0% 0%, rgba(236,56,255,.18), transparent 55%),
-                    radial-gradient(120% 220% at 100% 0%, rgba(139,92,246,.18), transparent 55%);
+                    radial-gradient(140% 240% at 0% 0%, rgba(255,56,56,.18), transparent 55%),
+                    radial-gradient(120% 220% at 100% 0%, rgba(246,92,92,.18), transparent 55%);
         }
         .btn.intl{
             background:
                     linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02)),
-                    radial-gradient(120% 220% at 0% 0%, rgba(99,102,241,.22), transparent 55%),
-                    radial-gradient(120% 220% at 100% 0%, rgba(168,85,247,.18), transparent 55%);
+                    radial-gradient(120% 220% at 0% 0%, rgba(241,99,99,.22), transparent 55%),
+                    radial-gradient(120% 220% at 100% 0%, rgba(247,85,85,.18), transparent 55%);
         }
         .hint{margin-top:18px; font-size:12.5px; color:var(--muted); opacity:.9; text-align:center}
         @media (max-width:420px){
@@ -177,6 +177,5 @@
         </div>
     </div>
 </div>
-
-
-</body></html>
+</body>
+</html>
