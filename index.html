@@ -1,181 +1,169 @@
 <!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
+<html lang="ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FRIZTIME — HvH Анархия</title>
-    <style>
-        :root{
-            --bg-1:#0e0000;
-            --bg-2:#200505;
-            --bg-3:#2a0b0b;
-            --glass:rgba(255,255,255,.06);
-            --stroke:rgba(255,255,255,.08);
-            --text:#ffe7e7;
-            --muted:#ffa9a9;
-            --accent-1:#f65c5c;
-            --accent-2:#f75555;
-            --accent-3:#ff3838;
-            --shadow:0 30px 80px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.06);
-            --radius:22px;
-            --blur:14px;
-        }
-        *{box-sizing:border-box}
-        html,body{height:100%}
-        body{
-            margin:0;
-            font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-            color:var(--text);
-            background:
-                    radial-gradient(1200px 600px at 15% 20%, #640d0d 0%, transparent 60%),
-                    radial-gradient(900px 500px at 85% 0%, #790f0f 0%, transparent 60%),
-                    radial-gradient(1100px 700px at 50% 110%, #490e0e 0%, transparent 60%),
-                    linear-gradient(160deg,var(--bg-1),var(--bg-2) 40%, var(--bg-3) 100%);
-            overflow-x:hidden;
-        }
-        .wrap{
-            min-height:100%;
-            display:grid;
-            place-items:center;
-            padding:48px 16px;
-        }
-        .card{
-            width:min(860px,94vw);
-            background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));
-            border:1px solid var(--stroke);
-            border-radius:var(--radius);
-            box-shadow:var(--shadow);
-            backdrop-filter:blur(var(--blur));
-            -webkit-backdrop-filter:blur(var(--blur));
-            position:relative;
-            isolation:isolate;
-            padding:22px;
-        }
-        .glow{
-            position:absolute; inset:-2px;
-            background:radial-gradient(600px 200px at 20% 0%, rgba(247,85,85,.18), transparent 60%),
-            radial-gradient(500px 300px at 90% 30%, rgba(255,56,56,.16), transparent 60%);
-            filter:blur(40px);
-            z-index:-1;
-        }
-        .header{
-            display:flex; align-items:center; justify-content:space-between;
-            gap:14px; padding:6px 6px 16px;
-            border-bottom:1px solid var(--stroke);
-            flex-wrap:wrap;
-        }
-        .brand{display:flex; align-items:center; gap:12px}
-        .logo{
-            width:44px; height:44px; border-radius:14px;
-            background:conic-gradient(from 180deg, var(--accent-1), var(--accent-2), var(--accent-3), var(--accent-1));
-            box-shadow:0 10px 30px rgba(247,85,85,.45);
-            display:grid; place-items:center;
-            flex:0 0 auto;
-        }
-        .logo svg{width:26px;height:26px;opacity:.96}
-        .brand h1{margin:0;font-weight:800;font-size:22px;letter-spacing:.3px}
-        .header-actions{display:flex; gap:10px; flex-wrap:wrap}
-        .link{
-            display:flex; align-items:center; gap:8px; padding:10px 12px;
-            border-radius:12px; text-decoration:none; color:var(--text); font-weight:700; font-size:14px;
-            border:1px solid var(--stroke);
-            background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
-            box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
-            transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease;
-        }
-        .link:hover{transform:translateY(-1px); border-color:rgba(247,85,85,.45); box-shadow:0 8px 26px rgba(196,63,63,.35)}
-        .link svg{width:18px;height:18px}
-        .content{padding:22px 6px 8px}
-        .title{font-size:26px;font-weight:800;margin:0 0 16px}
-        .buttons{display:grid;grid-template-columns:1fr;gap:14px}
-        @media (min-width:640px){.buttons{grid-template-columns:1fr 1fr}}
-        .btn{
-            position:relative; display:flex; align-items:center; justify-content:center; gap:12px;
-            padding:18px 20px; border-radius:18px; border:1px solid var(--stroke);
-            text-decoration:none; color:var(--text); font-weight:800; letter-spacing:.2px;
-            background:
-                    linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02)),
-                    radial-gradient(120% 220% at 0% 0%, rgba(246,92,92,.25), transparent 50%);
-            box-shadow:0 14px 40px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.06);
-            transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
-            overflow:hidden;
-        }
-        .btn::after{
-            content:"";
-            position:absolute; inset:-1px;
-            background:radial-gradient(500px 120px at 50% -20%, rgba(255,56,56,.2), transparent 60%);
-            opacity:.0; transition:opacity .2s ease;
-            border-radius:inherit; pointer-events:none;
-        }
-        .btn:hover{transform:translateY(-2px); border-color:rgba(247,85,85,.45); box-shadow:0 20px 60px rgba(196,63,63,.45)}
-        .btn:hover::after{opacity:1}
-        .btn svg{width:22px;height:22px;opacity:.95}
-        .btn.rf{
-            background:
-                    linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02)),
-                    radial-gradient(140% 240% at 0% 0%, rgba(255,56,56,.18), transparent 55%),
-                    radial-gradient(120% 220% at 100% 0%, rgba(246,92,92,.18), transparent 55%);
-        }
-        .btn.intl{
-            background:
-                    linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02)),
-                    radial-gradient(120% 220% at 0% 0%, rgba(241,99,99,.22), transparent 55%),
-                    radial-gradient(120% 220% at 100% 0%, rgba(247,85,85,.18), transparent 55%);
-        }
-        .hint{margin-top:18px; font-size:12.5px; color:var(--muted); opacity:.9; text-align:center}
-        @media (max-width:420px){
-            .brand h1{font-size:20px}
-            .logo{width:40px;height:40px;border-radius:12px}
-            .title{font-size:22px}
-        }
-    </style>
+    <link rel="shortcut icon" href="https://i.pinimg.com/736x/03/eb/6c/03eb6cc61a42b191c36f811e5c5d3972.jpg">
+    <title>bio</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="./bio_files/css2" rel="stylesheet">
+    <link href="./bio_files/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./bio_files/bio.css">
 </head>
 <body>
-<div class="wrap">
-    <div class="card">
-        <div class="glow"></div>
-        <div class="header">
-            <div class="brand">
-                <div class="logo">
-                    <svg viewBox="0 0 24 24" fill="none">
-                        <path d="M5 12l4.5 4.5L19 7" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
-                    </svg>
+<!-- LIQUID GLASS FILTER (точно ваш вариант) -->
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position: absolute; overflow: hidden;">
+    <defs>
+        <filter id="liquid-glass-filter" x="0%" y="0%" width="100%" height="100%">
+            <feturbulence type="fractalNoise" baseFrequency="0.006 0.006" numOctaves="2" seed="92" result="noise"></feturbulence>
+            <fegaussianblur in="noise" stdDeviation="2" result="blurred"></fegaussianblur>
+            <fedisplacementmap in="SourceGraphic" in2="blurred" scale="48" xChannelSelector="R" yChannelSelector="G"></fedisplacementmap>
+        </filter>
+    </defs>
+</svg>
+
+<!-- ваш оригинальный дополнительный SVG-фильтр(ы) -->
+<svg style="display:none">
+    <defs>
+        <!-- основной фрактальный displacement (тот, что уже был в предыдущем варианте) -->
+        <filter id="filter" color-interpolation-filters="sRGB" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse">
+            <fedisplacementmap in="SourceGraphic" in2="SourceGraphic" scale="18" xChannelSelector="R" yChannelSelector="B" x="0%" y="0%" width="100%" height="100%" result="displacementMap"></fedisplacementmap>
+            <fegaussianblur stdDeviation="3 3" in="displacementMap" result="blur"></fegaussianblur>
+        </filter>
+
+        <!-- sideflow: мягкий turbulence -> displacement -> blur (для боковых "лент") -->
+        <filter id="sideflow" x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse">
+            <feturbulence type="fractalNoise" baseFrequency="0.008 0.015" numOctaves="2" seed="9" result="turb"></feturbulence>
+            <fedisplacementmap in="SourceGraphic" in2="turb" scale="14" xChannelSelector="R" yChannelSelector="G" result="distort"></fedisplacementmap>
+            <fegaussianblur in="distort" stdDeviation="2" result="final"></fegaussianblur>
+            <feblend in="SourceGraphic" in2="final" mode="normal"></feblend>
+        </filter>
+    </defs>
+</svg>
+
+<video id="bg-video" class="bg-video" autoplay="" loop="" playsinline="" muted=""></video>
+<source src="./bio_files/fonj.png" type="video/MP4"></video>
+
+<div class="overlay"></div>
+
+<main class="card">
+    <!-- Добавлен класс interactive -->
+    <section class="about block liquid-glass interactive">
+        <div class="glass-sides">
+            <span class="glass-side left" aria-hidden="true"></span>
+            <span class="glass-side right" aria-hidden="true"></span>
+        </div>
+
+        <img src="./bio_files/ava.png" alt="Мой аватар" class="avatar">
+        <div class="about-text">
+            <h1 class="greeting">
+                <span class="silver-text">Привет, я</span>
+                <span class="name">greenov</span>
+            </h1>
+            <p class="sub">
+                #nmnl - no music no life<br><br>
+                project:<br>
+                <a href="https://t.me/arcanerp_be" class="accent-link"> <span class="name-link">ArcaneRP </span></a><br>
+                <a href="https://t.me/friztime_pe" class="accent-link"> <span class="name-link">FrizTime</span></a><br>
+                <a href="https://t.me/greenovsw" class="accent-link"> <span class="name-link">Blog</span></a><br>
+                <a href="https://t.me/greenovbio" class="accent-link"> <span class="name-link">BIO</span></a><br>
+                <a href="https://t.me/greenovotziv" class="accent-link"> <span class="name-link">Reputation</span></a>
+            </p>
+        </div>
+    </section>
+
+    <section class="widgets">
+        <div class="widget time block interactive liquid-glass">
+            <div class="glass-sides">
+                <span class="glass-side left" aria-hidden="true"></span>
+                <span class="glass-side right" aria-hidden="true"></span>
+            </div>
+            <h3><i class="fa-solid fa-clock"></i> time</h3>
+            <div id="time">19:41:31</div>
+            <div class="tz">MSK (Europe/Moscow)</div>
+        </div>
+
+        <div class="widget weather block interactive liquid-glass">
+            <div class="glass-sides">
+                <span class="glass-side left" aria-hidden="true"></span>
+                <span class="glass-side right" aria-hidden="true"></span>
+            </div>
+            <h3><i class="fa-solid fa-cloud-sun"></i> weather</h3>
+            <div class="weather-main">
+                <div id="weather-icon" class="weather-icon w-cloud"><i class="fa-solid fa-cloud"></i></div>
+                <div>
+                    <div id="weather-desc">Пасмурно</div>
+                    <div id="weather-temp" class="weather-temp">5°C</div>
                 </div>
-                <h1>FRIZTIME</h1>
-            </div>
-            <div class="header-actions">
-                <a class="link" href="https://t.me/friztime_pe" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24" fill="none"><path d="M21 3L9.5 12.5M21 3l-6 18-5-8-6-3 17-7z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                    Telegram
-                </a>
-                <a class="link" href="https://discord.gg/3TyC8XrB6d" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24" fill="none"><path d="M7.5 18.5c2.8 1.3 6.2 1.3 9 0 .3-.9.7-1.8 1.2-2.6.7-.1 1.4-.3 2-.6-.4-3-1.7-5.6-3.6-7.7-.9-.3-1.8-.5-2.7-.6-.2.4-.4.9-.5 1.3-1.9-.3-3.9-.3-5.8 0-.1-.4-.3-.9-.5-1.3-.9.1-1.8.3-2.7.6-1.9 2.1-3.2 4.7-3.6 7.7.6.3 1.3.5 2 .6.5.8.9 1.7 1.2 2.6z" stroke="white" stroke-width="1.6" stroke-linejoin="round"></path><circle cx="9" cy="12" r="1.2" fill="#fff"></circle><circle cx="15" cy="12" r="1.2" fill="#fff"></circle></svg>
-                    Discord
-                </a>
             </div>
         </div>
 
-        <div class="content">
-            <h2 class="title">Магазины</h2>
-            <div class="buttons">
-                <a class="btn rf" href="" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24" fill="none">
-                        <path d="M12 3v18M3 12h18" stroke="white" stroke-width="2.2" stroke-linecap="round"></path>
-                    </svg>
-                    Оплата из РФ
+        <div class="widget projects block interactive liquid-glass">
+            <div class="glass-sides">
+                <span class="glass-side left" aria-hidden="true"></span>
+                <span class="glass-side right" aria-hidden="true"></span>
+            </div>
+            <h3><i class="fa-solid fa-diagram-project"></i> projects</h3>
+            <div class="projects-list">
+                <a class="project github" href="https://github.com/Greenov789" target="_blank" rel="noopener">
+                    <i class="fa-brands fa-github"></i> GitHub
                 </a>
 
-                <a class="btn intl" href="" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24" fill="none">
-                        <circle cx="12" cy="12" r="9" stroke="white" stroke-width="2"></circle>
-                        <path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18" stroke="white" stroke-width="2" stroke-linecap="round"></path>
-                    </svg>
-                    Оплата из Украины и других стран
-                </a>
+                <div class="project friztime">
+                    <div class="project-info">
+                        <div class="project-name">friztime.ua</div>
+                    </div>
+                    <div class="online-row">
+                        <div class="server-donut-wrapper">
+                            <svg id="server-donut" class="donut" viewBox="0 0 120 120" width="90" height="90" aria-hidden="true">
+                                <circle r="42" cx="60" cy="60" class="donut-bg" stroke-width="16" fill="none"></circle>
+                                <circle r="42" cx="60" cy="60" class="donut-progress" stroke-width="16" stroke-linecap="round" fill="none" transform="rotate(-90 60 60)" style="stroke-dasharray: 263.894, 263.894; stroke-dashoffset: 263.894;"></circle>
+                                <text id="server-center" x="60" y="64" text-anchor="middle" class="donut-text">—</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <div class="hint">после выбора произойдёт переход на соответствующую страницу оплаты</div>
         </div>
-    </div>
-</div>
-</body>
-</html>
+
+        <div class="widget stack block interactive liquid-glass">
+            <div class="glass-sides">
+                <span class="glass-side left" aria-hidden="true"></span>
+                <span class="glass-side right" aria-hidden="true"></span>
+            </div>
+            <h3><i class="fa-solid fa-layer-group"></i> stack</h3>
+            <div class="stack-grid">
+                <div class="lang active" data-lang="PHP">
+                    <div class="lang-name">PHP</div>
+                    <div class="lang-below">ну не</div>
+                </div>
+                <div class="lang active" data-lang="JavaScript">
+                    <div class="lang-name">JavaScript</div>
+                    <div class="lang-below">да ща будет</div>
+                </div>
+                <div class="lang active" data-lang="HTML/CSS">
+                    <div class="lang-name">HTML/CSS</div>
+                    <div class="lang-below">ну вот почти!1!!1</div>
+                </div>
+                <div class="lang java static" data-lang="Java">
+                    <div class="lang-name">Java</div>
+                    <div class="lang-below">любимка ♥ </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer block liquid-glass">
+        <div class="glass-sides">
+            <span class="glass-side left" aria-hidden="true"></span>
+            <span class="glass-side right" aria-hidden="true"></span>
+        </div>
+        © 2024-2025. Все права защищены. Копирование запрещено!
+    </footer>
+</main>
+
+<script src="./bio_files/scriptbio.js"></script>
+
+
+</body></html>
