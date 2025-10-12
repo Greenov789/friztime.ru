@@ -1,168 +1,87 @@
 <!DOCTYPE html>
-<html lang="ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="https://i.pinimg.com/736x/03/eb/6c/03eb6cc61a42b191c36f811e5c5d3972.jpg">
-    <title>bio</title>
+<html lang="ru" data-bs-theme="dark"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#171717">
 
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-    <link href="./bio_files/css2" rel="stylesheet">
-    <link href="./bio_files/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./bio_files/bio.css">
-</head>
-<body>
-<!-- LIQUID GLASS FILTER (точно ваш вариант) -->
-<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position: absolute; overflow: hidden;">
-    <defs>
-        <filter id="liquid-glass-filter" x="0%" y="0%" width="100%" height="100%">
-            <feturbulence type="fractalNoise" baseFrequency="0.006 0.006" numOctaves="2" seed="92" result="noise"></feturbulence>
-            <fegaussianblur in="noise" stdDeviation="2" result="blurred"></fegaussianblur>
-            <fedisplacementmap in="SourceGraphic" in2="blurred" scale="48" xChannelSelector="R" yChannelSelector="G"></fedisplacementmap>
-        </filter>
-    </defs>
-</svg>
+<title>LIVE MC</title>
+<meta name="description" content="Честный мониторинг серверов Майнкрафт">
 
-<!-- ваш оригинальный дополнительный SVG-фильтр(ы) -->
-<svg style="display:none">
-    <defs>
-        <!-- основной фрактальный displacement (тот, что уже был в предыдущем варианте) -->
-        <filter id="filter" color-interpolation-filters="sRGB" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse">
-            <fedisplacementmap in="SourceGraphic" in2="SourceGraphic" scale="18" xChannelSelector="R" yChannelSelector="B" x="0%" y="0%" width="100%" height="100%" result="displacementMap"></fedisplacementmap>
-            <fegaussianblur stdDeviation="3 3" in="displacementMap" result="blur"></fegaussianblur>
-        </filter>
+<link rel="icon" type="image/svg+xml" href="./LIVE MC_files/logo.svg">
 
-        <!-- sideflow: мягкий turbulence -> displacement -> blur (для боковых "лент") -->
-        <filter id="sideflow" x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse">
-            <feturbulence type="fractalNoise" baseFrequency="0.008 0.015" numOctaves="2" seed="9" result="turb"></feturbulence>
-            <fedisplacementmap in="SourceGraphic" in2="turb" scale="14" xChannelSelector="R" yChannelSelector="G" result="distort"></fedisplacementmap>
-            <fegaussianblur in="distort" stdDeviation="2" result="final"></fegaussianblur>
-            <feblend in="SourceGraphic" in2="final" mode="normal"></feblend>
-        </filter>
-    </defs>
-</svg>
 
-<div id="bg-image" class="bg-video" style="background-image: url('./bio_files/fon.png'); background-size: cover; background-position: center;"></div>
-    
-<div class="overlay"></div>
+<script type="module" crossorigin="" src="./LIVE MC_files/index-BRtW1k7w.js"></script>
+<link rel="stylesheet" crossorigin="" href="./LIVE MC_files/index-CgJf4sm4.css">
 
-<main class="card">
-    <!-- Добавлен класс interactive -->
-    <section class="about block liquid-glass interactive">
-        <div class="glass-sides">
-            <span class="glass-side left" aria-hidden="true"></span>
-            <span class="glass-side right" aria-hidden="true"></span>
-        </div>
+</head><body>
+	<div id="tooltip" class="position-absolute p-2 bg-dark text-white rounded" style="display: none; z-index: 1080; top: 588px; left: 556px;"><strong>AgroMC</strong>: 15<br>AnMine: 110<br>Antralia: 128<br>ArtMine: 26<br>BlackTime: 38<br>BladeWay: 15<br>BloodMine: 122<br>BreadixWorld: -<br>Collapse: 6<br>Cristalix: 24<br>CubeHead: 68<br>cubeland: 17<br>DAYCUBE: 20<br>DoshikMine: 20<br>Dygers: 231<br>FastCraft: 1<br>Feplex: 54<br>FIGHT MC: 21<br>FMine: 54<br>FrizMine: 299<br>GamePE: 319<br>GamesLand: 8<br>GreenWix: 1<br>HypeGO: 57<br>InMine: 200<br>IronMine: 31<br>LOOT MC: 240<br>MCZone: 530<br>MineFun: 126<br>MinePE: 115<br>ModsCraft: 313<br>MyPEX: 63<br>NeverTime: 1<br>NexLand: 33<br>OasysPE: 263<br>Phoenix: 514<br>RiftTime: 4<br>RussianWorld: 61<br>RustMC: 110<br>SaveMe: 23<br>SkillMine: 0<br>SoulCraft: 5<br>SparkTime: 54<br>Synapse: 8<br>VaniLa PvP: 5<br>VineMine: 105<br>WastoPE: 91<br><br><strong>22:17:15</strong></div>
 
-        <img src="./bio_files/ava.png" alt="Мой аватар" class="avatar">
-        <div class="about-text">
-            <h1 class="greeting">
-                <span class="silver-text">Привет, я</span>
-                <span class="name">greenov</span>
-            </h1>
-            <p class="sub">
-                #nmnl - no music no life<br><br>
-                project:<br>
-                <a href="https://t.me/arcanerp_be" class="accent-link"> <span class="name-link">ArcaneRP </span></a><br>
-                <a href="https://t.me/friztime_pe" class="accent-link"> <span class="name-link">FrizTime</span></a><br>
-                <a href="https://t.me/greenovsw" class="accent-link"> <span class="name-link">Blog</span></a><br>
-                <a href="https://t.me/greenovbio" class="accent-link"> <span class="name-link">BIO</span></a><br>
-                <a href="https://t.me/greenovotziv" class="accent-link"> <span class="name-link">Reputation</span></a>
-            </p>
-        </div>
-    </section>
+	<div id="header" class="a">
+		<header>
+			<div>
+				<div class="hstack justify-content-between">
+					<div class="hstack gap-2 align-items-center">
+						<img width="48" height="48" src="./LIVE MC_files/logo.svg" alt="">
+						<p class="fs-1 fw-bold mb-0 text-body-emphasis">LIVE MC</p>
+					</div>
+					<div>
+						<button id="theme" class="btn btn-primary">Theme: <span id="theme-text" class="text-body-secondary">Dark</span></button>
+					</div>
+				</div>
+				<p id="text" class="lead mb-0 d-none">Counting <span class="fw-semibold text-body-emphasis" id="stat_totalPlayers">0</span> players on <span class="fw-semibold text-body-emphasis" id="stat_networks">0</span> Minecraft servers</p>
+				<p id="status-text" class="lead mb-0 d-block" style="display: none;">Connecting...</p>
+			</div>
+		</header>
 
-    <section class="widgets">
-        <div class="widget time block interactive liquid-glass">
-            <div class="glass-sides">
-                <span class="glass-side left" aria-hidden="true"></span>
-                <span class="glass-side right" aria-hidden="true"></span>
-            </div>
-            <h3><i class="fa-solid fa-clock"></i> time</h3>
-            <div id="time">19:41:31</div>
-            <div class="tz">MSK (Europe/Moscow)</div>
-        </div>
+		<div class="d-flex w-100 mt-2">
+			<button id="stream_bedrock" class="btn btn-primary rounded-end-0 w-50 active">Bedrock</button>
+			<button id="stream_java" class="btn btn-primary rounded-start-0 w-50">Java</button>
+		</div>
+	</div>
 
-        <div class="widget weather block interactive liquid-glass">
-            <div class="glass-sides">
-                <span class="glass-side left" aria-hidden="true"></span>
-                <span class="glass-side right" aria-hidden="true"></span>
-            </div>
-            <h3><i class="fa-solid fa-cloud-sun"></i> weather</h3>
-            <div class="weather-main">
-                <div id="weather-icon" class="weather-icon w-cloud"><i class="fa-solid fa-cloud"></i></div>
-                <div>
-                    <div id="weather-desc">Пасмурно</div>
-                    <div id="weather-temp" class="weather-temp">5°C</div>
-                </div>
-            </div>
-        </div>
+	<div id="big-graph" class="a d-none">
+		<button id="settings-toggle" class="btn btn-primary d-none">Settings</button>
+	</div>
 
-        <div class="widget projects block interactive liquid-glass">
-            <div class="glass-sides">
-                <span class="glass-side left" aria-hidden="true"></span>
-                <span class="glass-side right" aria-hidden="true"></span>
-            </div>
-            <h3><i class="fa-solid fa-diagram-project"></i> projects</h3>
-            <div class="projects-list">
-                <a class="project github" href="https://github.com/Greenov789" target="_blank" rel="noopener">
-                    <i class="fa-brands fa-github"></i> GitHub
-                </a>
+	<div id="big-graph-controls" class="a d-none">
+		<div id="big-graph-checkboxes"></div>
 
-                <div class="project friztime">
-                    <div class="project-info">
-                        <div class="project-name">friztime</div>
-                    </div>
-                    <div class="online-row">
-                        <div class="server-donut-wrapper">
-                            <svg id="server-donut" class="donut" viewBox="0 0 120 120" width="90" height="90" aria-hidden="true">
-                                <circle r="42" cx="60" cy="60" class="donut-bg" stroke-width="16" fill="none"></circle>
-                                <circle r="42" cx="60" cy="60" class="donut-progress" stroke-width="16" stroke-linecap="round" fill="none" transform="rotate(-90 60 60)" style="stroke-dasharray: 263.894, 263.894; stroke-dashoffset: 263.894;"></circle>
-                                <text id="server-center" x="60" y="64" text-anchor="middle" class="donut-text">—</text>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
+		<div class="hstack justify-content-center gap-2 mt-3">
 
-            </div>
-        </div>
+			<button class="btn btn-secondary graph-controls-show" livemc-show-type="all">
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 16 16" aria-hidden="true">
+					<path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z"></path>
+					<path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"></path>
+				</svg>
+				Show All
+			</button>
 
-        <div class="widget stack block interactive liquid-glass">
-            <div class="glass-sides">
-                <span class="glass-side left" aria-hidden="true"></span>
-                <span class="glass-side right" aria-hidden="true"></span>
-            </div>
-            <h3><i class="fa-solid fa-layer-group"></i> stack</h3>
-            <div class="stack-grid">
-                <div class="lang active" data-lang="PHP">
-                    <div class="lang-name">PHP</div>
-                    <div class="lang-below">ну не</div>
-                </div>
-                <div class="lang active" data-lang="JavaScript">
-                    <div class="lang-name">JavaScript</div>
-                    <div class="lang-below">да ща будет</div>
-                </div>
-                <div class="lang active" data-lang="HTML/CSS">
-                    <div class="lang-name">HTML/CSS</div>
-                    <div class="lang-below">ну вот почти!1!!1</div>
-                </div>
-                <div class="lang java static" data-lang="Java">
-                    <div class="lang-name">Java</div>
-                    <div class="lang-below">любимка ♥ </div>
-                </div>
-            </div>
-        </div>
-    </section>
+			<button class="btn btn-secondary graph-controls-show" livemc-show-type="none">
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 16 16" aria-hidden="true">
+					<path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7 7 0 0 0-2.79.588l.77.771A6 6 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755q-.247.248-.517.486z"></path>
+					<path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829"></path>
+					<path d="M3.35 5.47q-.27.24-.518.487A13 13 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7 7 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12z"></path>
+				</svg>
+				Hide All
+			</button>
 
-    <footer class="footer block liquid-glass">
-        <div class="glass-sides">
-            <span class="glass-side left" aria-hidden="true"></span>
-            <span class="glass-side right" aria-hidden="true"></span>
-        </div>
-        Copyright © 2025 Greenov. Все права защищены. Скачивание, копирование и редактирование не допускается
-    </footer>
-</main>
+			<button class="btn btn-favorite graph-controls-show" livemc-show-type="favorites">
+				<svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 16 16" aria-hidden="true">
+					<path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"></path>
+				</svg>
+				Only Favorites
+			</button>
 
-<script src="./bio_files/scriptbio.js"></script>
+		</div>
+	</div>
+
+	<div id="server-list-wrapper" class="a d-none">
+		<div class="pt-3 px-3">
+			<button id="sort-by" class="btn btn-primary d-none">Sort by: <span id="sort-by-text" class="text-body-secondary">...</span></button>
+		</div>
+		<div id="server-list" class="row row-cols-1 row-cols-lg-2 row-cols-xxl-3 g-0"></div>
+	</div>
+<script defer="" src="./LIVE MC_files/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;ea9ffd39cece4173b9880bae6a0a3a71&quot;,&quot;r&quot;:1,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
+
 
 
 </body></html>
