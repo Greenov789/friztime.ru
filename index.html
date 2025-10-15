@@ -1,87 +1,1050 @@
 <!DOCTYPE html>
-<html lang="ru" data-bs-theme="dark"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#171717">
-
-<title>LIVE MC</title>
-<meta name="description" content="Честный мониторинг серверов Майнкрафт">
-
-<link rel="icon" type="image/svg+xml" href="./LIVE MC_files/logo.svg">
-
-
-<script type="module" crossorigin="" src="./LIVE MC_files/index-BRtW1k7w.js"></script>
-<link rel="stylesheet" crossorigin="" href="./LIVE MC_files/index-CgJf4sm4.css">
-
-</head><body>
-	<div id="tooltip" class="position-absolute p-2 bg-dark text-white rounded" style="display: none; z-index: 1080; top: 588px; left: 556px;"><strong>AgroMC</strong>: 15<br>AnMine: 110<br>Antralia: 128<br>ArtMine: 26<br>BlackTime: 38<br>BladeWay: 15<br>BloodMine: 122<br>BreadixWorld: -<br>Collapse: 6<br>Cristalix: 24<br>CubeHead: 68<br>cubeland: 17<br>DAYCUBE: 20<br>DoshikMine: 20<br>Dygers: 231<br>FastCraft: 1<br>Feplex: 54<br>FIGHT MC: 21<br>FMine: 54<br>FrizMine: 299<br>GamePE: 319<br>GamesLand: 8<br>GreenWix: 1<br>HypeGO: 57<br>InMine: 200<br>IronMine: 31<br>LOOT MC: 240<br>MCZone: 530<br>MineFun: 126<br>MinePE: 115<br>ModsCraft: 313<br>MyPEX: 63<br>NeverTime: 1<br>NexLand: 33<br>OasysPE: 263<br>Phoenix: 514<br>RiftTime: 4<br>RussianWorld: 61<br>RustMC: 110<br>SaveMe: 23<br>SkillMine: 0<br>SoulCraft: 5<br>SparkTime: 54<br>Synapse: 8<br>VaniLa PvP: 5<br>VineMine: 105<br>WastoPE: 91<br><br><strong>22:17:15</strong></div>
-
-	<div id="header" class="a">
-		<header>
-			<div>
-				<div class="hstack justify-content-between">
-					<div class="hstack gap-2 align-items-center">
-						<img width="48" height="48" src="./LIVE MC_files/logo.svg" alt="">
-						<p class="fs-1 fw-bold mb-0 text-body-emphasis">LIVE MC</p>
-					</div>
-					<div>
-						<button id="theme" class="btn btn-primary">Theme: <span id="theme-text" class="text-body-secondary">Dark</span></button>
-					</div>
-				</div>
-				<p id="text" class="lead mb-0 d-none">Counting <span class="fw-semibold text-body-emphasis" id="stat_totalPlayers">0</span> players on <span class="fw-semibold text-body-emphasis" id="stat_networks">0</span> Minecraft servers</p>
-				<p id="status-text" class="lead mb-0 d-block" style="display: none;">Connecting...</p>
-			</div>
-		</header>
-
-		<div class="d-flex w-100 mt-2">
-			<button id="stream_bedrock" class="btn btn-primary rounded-end-0 w-50 active">Bedrock</button>
-			<button id="stream_java" class="btn btn-primary rounded-start-0 w-50">Java</button>
-		</div>
-	</div>
-
-	<div id="big-graph" class="a d-none">
-		<button id="settings-toggle" class="btn btn-primary d-none">Settings</button>
-	</div>
-
-	<div id="big-graph-controls" class="a d-none">
-		<div id="big-graph-checkboxes"></div>
-
-		<div class="hstack justify-content-center gap-2 mt-3">
-
-			<button class="btn btn-secondary graph-controls-show" livemc-show-type="all">
-				<svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 16 16" aria-hidden="true">
-					<path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z"></path>
-					<path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"></path>
-				</svg>
-				Show All
-			</button>
-
-			<button class="btn btn-secondary graph-controls-show" livemc-show-type="none">
-				<svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 16 16" aria-hidden="true">
-					<path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7 7 0 0 0-2.79.588l.77.771A6 6 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755q-.247.248-.517.486z"></path>
-					<path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829"></path>
-					<path d="M3.35 5.47q-.27.24-.518.487A13 13 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7 7 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12z"></path>
-				</svg>
-				Hide All
-			</button>
-
-			<button class="btn btn-favorite graph-controls-show" livemc-show-type="favorites">
-				<svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 16 16" aria-hidden="true">
-					<path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"></path>
-				</svg>
-				Only Favorites
-			</button>
-
-		</div>
-	</div>
-
-	<div id="server-list-wrapper" class="a d-none">
-		<div class="pt-3 px-3">
-			<button id="sort-by" class="btn btn-primary d-none">Sort by: <span id="sort-by-text" class="text-body-secondary">...</span></button>
-		</div>
-		<div id="server-list" class="row row-cols-1 row-cols-lg-2 row-cols-xxl-3 g-0"></div>
-	</div>
-<script defer="" src="./LIVE MC_files/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;ea9ffd39cece4173b9880bae6a0a3a71&quot;,&quot;r&quot;:1,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
-
-
-
-</body></html>
+<html lang="ru" class="overflow-x-hidden">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Speeky — современный мессенджер</title>
+    <meta name="description" content="Speeky — платформа для общения: сообщения, звонки, безопасность и минимализм.">
+    <meta name="application-name" content="Speeky">
+    <link rel="canonical" href="https://speeky.chat/">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Speeky — современный мессенджер">
+    <meta property="og:description" content="Сообщения становятся разговорами. Быстро, безопасно, минималистично.">
+    <meta property="og:url" content="https://speeky.chat">
+    <meta property="og:site_name" content="Speeky">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Speeky — современный мессенджер">
+    <meta name="twitter:description" content="Сообщения становятся разговорами. Быстро, безопасно, минималистично.">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://speeky.chat/favicon.ico">
+    <link rel="icon" href="https://speeky.chat/favicon.ico">
+    <link rel="apple-touch-icon" href="https://speeky.chat/logo192.png" sizes="192x192">
+    <link rel="apple-touch-icon" href="https://speeky.chat/logo512.png" sizes="512x512">
+    
+    <style>
+        /* Базовые стили */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        .sr-only:focus {
+            position: fixed;
+            top: 0.5rem;
+            left: 0.5rem;
+            background: white;
+            color: black;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.25rem;
+            width: auto;
+            height: auto;
+            clip: auto;
+            z-index: 10000;
+        }
+        
+        /* Стили для хедера */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem 1.5rem;
+        }
+        
+        .header-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 999px;
+            background-color: rgba(0, 0, 0, 0);
+            border: 1px solid rgba(255, 255, 255, 0);
+            backdrop-filter: blur(0px);
+            width: fit-content;
+            margin: 0 auto;
+        }
+        
+        .desktop-nav {
+            display: none;
+        }
+        
+        @media (min-width: 1024px) {
+            .desktop-nav {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 1rem;
+                width: 100%;
+                position: relative;
+            }
+            
+            .nav-indicator {
+                position: absolute;
+                background-color: #7a6cfb;
+                border-radius: 9999px;
+                top: 4px;
+                bottom: 4px;
+                left: 0;
+                width: 180.55px;
+                z-index: -1;
+            }
+            
+            .logo {
+                font-size: 2rem;
+                padding: 0 1rem;
+                margin-right: 2rem;
+                user-select: none;
+                cursor: pointer;
+                transition: all 0.3s;
+                font-family: 'FindSansPro', sans-serif;
+                flex-shrink: 0;
+                color: white;
+            }
+            
+            .nav-links {
+                position: relative;
+                display: flex;
+                gap: 2rem;
+                justify-content: center;
+            }
+            
+            .nav-link {
+                position: relative;
+                font-size: 1rem;
+                padding: 0.25rem 0.75rem;
+                user-select: none;
+                cursor: pointer;
+                font-family: 'FindSansPro', sans-serif;
+                flex-shrink: 0;
+                transition: color 0.2s;
+                z-index: 10;
+                color: white;
+            }
+            
+            .nav-link:hover {
+                color: #d1d5db;
+            }
+            
+            .nav-actions {
+                display: flex;
+                gap: 0.5rem;
+                flex-shrink: 0;
+                margin-left: 2rem;
+            }
+            
+            .cta-button {
+                padding: 0 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 9999px;
+                font-family: 'SoyuzGrotesk', sans-serif;
+                font-size: 1.125rem;
+                cursor: pointer;
+                user-select: none;
+                transition: all 0.3s;
+                background: white;
+                padding: 0.375rem 1rem;
+                color: black;
+            }
+            
+            .cta-button:hover {
+                color: white;
+            }
+        }
+        
+        .mobile-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: fit-content;
+            z-index: 9999999;
+        }
+        
+        @media (min-width: 1024px) {
+            .mobile-nav {
+                display: none;
+            }
+        }
+        
+        .mobile-logo {
+            font-size: 1.5rem;
+            padding: 0 0.5rem;
+            user-select: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'FindSansPro', sans-serif;
+            color: white;
+        }
+        
+        .mobile-logo:hover {
+            color: #7a6cfb;
+        }
+        
+        .mobile-menu-button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            padding: 0.25rem;
+        }
+        
+        .menu-line {
+            display: block;
+            width: 1.5rem;
+            height: 0.125rem;
+            background-color: white;
+            margin-bottom: 0.25rem;
+            transition: all 0.3s;
+        }
+        
+        .menu-line:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Стили для основного контента */
+        main {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding-top: 1rem;
+        }
+        
+        /* Герой секция */
+        .hero-section {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+        }
+        
+        .hero-content {
+            font-family: 'FindSansPro', sans-serif;
+            margin: 0 1rem;
+            max-width: 450px;
+            gap: 1rem;
+            justify-content: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        @media (min-width: 768px) {
+            .hero-content {
+                margin: 0;
+            }
+        }
+        
+        .hero-title {
+            font-size: 2rem;
+        }
+        
+        .highlighted-text {
+            position: relative;
+            color: #00FF55;
+            display: inline-block;
+            min-width: 150px;
+        }
+        
+        .cursor {
+            display: inline-block;
+            width: 0.125rem;
+            height: 1.2em;
+            background-color: #00FF55;
+            margin-left: 0.125rem;
+            vertical-align: top;
+        }
+        
+        .underline-decoration {
+            position: absolute;
+            left: 0;
+            bottom: -0.5rem;
+        }
+        
+        .hero-description {
+            font-family: 'SoyuzGrotesk', sans-serif;
+            font-size: 1.125rem;
+        }
+        
+        .telegram-link {
+            display: flex;
+            font-family: 'FindSansPro', sans-serif;
+            gap: 0.5rem;
+            width: fit-content;
+            padding: 0 1rem;
+            font-size: 1.125rem;
+            align-items: center;
+            border-radius: 9999px;
+            background-color: #1B92D1;
+            padding: 0.5rem;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .hero-image {
+            margin-left: auto;
+            display: none;
+            max-width: 500px;
+        }
+        
+        @media (min-width: 768px) {
+            .hero-image {
+                display: block;
+            }
+        }
+        
+        /* Секция особенностей */
+        .features-section {
+            margin-top: 2rem;
+        }
+        
+        .features-heading {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        .features-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding: 0 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .features-container {
+                padding: 0;
+            }
+        }
+        
+        .mobile-features {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .mobile-features {
+                display: none;
+            }
+        }
+        
+        .feature-card {
+            background-color: #0E0F13;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            min-height: 300px;
+        }
+        
+        .feature-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .feature-title {
+            font-family: 'FindSansPro', sans-serif;
+            font-size: 1.875rem;
+            font-weight: bold;
+            color: white;
+        }
+        
+        @media (min-width: 640px) {
+            .feature-title {
+                font-size: 2.25rem;
+            }
+        }
+        
+        .feature-description {
+            font-family: 'SoyuzGrotesk', sans-serif;
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.625;
+        }
+        
+        @media (min-width: 640px) {
+            .feature-description {
+                font-size: 1rem;
+            }
+        }
+        
+        .feature-image {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            z-index: 10;
+            width: 12rem;
+            height: 12rem;
+        }
+        
+        .feature-glow {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 8rem;
+            height: 8rem;
+            background-color: #EB4141;
+            border-radius: 9999px;
+            filter: blur(40px);
+            opacity: 0.6;
+        }
+        
+        @media (min-width: 640px) {
+            .feature-glow {
+                width: 5rem;
+                height: 5rem;
+            }
+        }
+        
+        .desktop-features {
+            display: none;
+        }
+        
+        @media (min-width: 768px) {
+            .desktop-features {
+                display: grid;
+                grid-template-rows: repeat(2, 1fr);
+                gap: 10px;
+            }
+        }
+        
+        .features-row {
+            height: 100%;
+            display: grid;
+            gap: 10px;
+        }
+        
+        .first-row {
+            grid-template-columns: 805px 621px;
+        }
+        
+        .second-row {
+            grid-template-columns: 621px 805px;
+        }
+        
+        .desktop-feature-card {
+            height: 100%;
+            background-color: #0E0F13;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 37px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 18px;
+        }
+        
+        .desktop-feature-content {
+            display: flex;
+            flex-direction: column;
+            gap: 19px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .desktop-feature-title {
+            font-family: 'FindSansPro', sans-serif;
+            font-size: 57px;
+        }
+        
+        .desktop-feature-description {
+            font-family: 'SoyuzGrotesk', sans-serif;
+            font-size: 18px;
+            max-width: 270px;
+        }
+        
+        .desktop-feature-image {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            z-index: 10;
+        }
+        
+        .desktop-feature-glow {
+            position: absolute;
+            width: 375px;
+            height: 375px;
+            border-radius: 9999px;
+            filter: blur(225px);
+        }
+        
+        .glow-red {
+            background-color: #EB4141;
+            bottom: -37px;
+            right: -37px;
+        }
+        
+        .glow-blue {
+            background-color: #518ADB;
+            bottom: -37px;
+            left: -37px;
+        }
+        
+        .glow-green {
+            background-color: #00FF55;
+            top: -37px;
+            right: -37px;
+        }
+        
+        .glow-yellow {
+            background-color: #FFF600;
+            top: -37px;
+            left: -37px;
+        }
+        
+        /* Секция протокола */
+        .protocol-section {
+            margin-top: 2rem;
+        }
+        
+        .protocol-heading {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        .protocol-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            align-items: center;
+            height: 110vh;
+        }
+        
+        .protocol-graphic {
+            display: none;
+        }
+        
+        @media (min-width: 768px) {
+            .protocol-graphic {
+                display: block;
+            }
+        }
+        
+        .protocol-content {
+            max-width: 600px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2.5rem;
+            margin-top: -100px;
+            justify-content: center;
+        }
+        
+        @media (min-width: 768px) {
+            .protocol-content {
+                margin-top: -100px;
+            }
+        }
+        
+        .protocol-logo {
+            filter: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.04)) drop-shadow(0 4px 3px rgba(0, 0, 0, 0.1));
+        }
+        
+        .protocol-text {
+            font-family: 'SoyuzGrotesk', sans-serif;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+        
+        .protocol-highlight {
+            color: #7A6CFB;
+            position: relative;
+        }
+        
+        .protocol-underline {
+            position: absolute;
+            top: 1.5rem;
+            left: 0;
+        }
+        
+        /* Секция FAQ */
+        .faq-section {
+            margin-top: 2rem;
+        }
+        
+        .faq-container {
+            display: flex;
+            flex-direction: column;
+            margin-top: 3rem;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .faq-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .faq-title {
+            font-family: 'FindSansPro', sans-serif;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .faq-title {
+                font-size: 3rem;
+            }
+        }
+        
+        .faq-subtitle {
+            font-family: 'SoyuzGrotesk', sans-serif;
+            font-size: 1.125rem;
+            color: #C2C2C2;
+        }
+        
+        .faq-list {
+            max-width: 1440px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .faq-item {
+            border: 1px solid #2A2D35;
+            border-radius: 24px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .faq-button {
+            width: 100%;
+            padding: 1.5rem;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: none;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+        
+        .faq-button:focus {
+            outline: none;
+        }
+        
+        .faq-question {
+            font-family: 'FindSansPro', sans-serif;
+            font-size: 1.25rem;
+            color: white;
+            padding-right: 1rem;
+            transition: color 0.3s;
+        }
+        
+        .faq-button:hover .faq-question {
+            color: #7a6cfb;
+        }
+        
+        .faq-icon {
+            flex-shrink: 0;
+            color: #7a6cfb;
+            transition: transform 0.2s;
+        }
+        
+        .faq-button:hover .faq-icon {
+            transform: scale(1.1);
+        }
+        
+        /* Футер */
+        footer {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: row;
+            margin-top: 3rem;
+            width: 100%;
+            justify-content: space-between;
+            gap: 1.5rem;
+        }
+        
+        .footer-left {
+            text-align: left;
+            font-family: 'FindSansPro', sans-serif;
+            color: #C2C2C2;
+            font-size: 1.125rem;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .footer-copyright {
+            color: #35373D;
+            font-size: 0.75rem;
+        }
+        
+        .footer-right {
+            text-align: right;
+            font-family: 'FindSansPro', sans-serif;
+            color: #C2C2C2;
+            font-size: 1.125rem;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+    <!-- Пропустить к содержимому (для доступности) -->
+    <a href="#content" class="sr-only">Перейти к содержимому</a>
+    
+    <!-- Хедер -->
+    <header>
+        <div class="header-container">
+            <!-- Десктопная навигация -->
+            <div class="desktop-nav">
+                <div class="nav-indicator"></div>
+                <a class="logo" href="/">Speeky</a>
+                <div class="nav-links">
+                    <button class="nav-link">Вопросы</button>
+                    <a class="nav-link" href="/blog">Блог</a>
+                    <a class="nav-link" href="/devs">Для разработчиков</a>
+                    <a class="nav-link" href="/team">Команда</a>
+                    <a class="nav-link" href="/carier">Карьера</a>
+                </div>
+                <div class="nav-actions">
+                    <a class="cta-button" href="/speeky">Открыть</a>
+                </div>
+            </div>
+            
+            <!-- Мобильная навигация -->
+            <div class="mobile-nav">
+                <a class="mobile-logo" href="/">Speeky</a>
+                <button class="mobile-menu-button" aria-label="Меню">
+                    <span class="menu-line"></span>
+                    <span class="menu-line"></span>
+                    <span class="menu-line"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Основной контент -->
+    <main id="content">
+        <div class="main-container">
+            <!-- Герой секция -->
+            <section aria-label="Герой страницы">
+                <div class="hero-section">
+                    <div class="hero-content">
+                        <h1 class="hero-title">
+                            Место, где 
+                            <span class="highlighted-text">
+                                <span class="inline-block relative">
+                                    планы<span class="cursor"></span>
+                                </span>
+                                <div class="underline-decoration" aria-hidden="true">
+                                    <svg width="180" height="15" viewBox="-2 0 180 15" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                        <path d="M2 11V11C11.4074 6.78287 21.9366 5.76066 31.9795 8.08946L37.3051 9.32437C46.29 11.4078 55.6551 11.1933 64.5351 8.70066L65.3052 8.48451C74.5859 5.8794 84.4077 5.90219 93.6762 8.55034V8.55034C102.723 11.1351 112.301 11.2198 121.392 8.79559L137.5 4.5" 
+                                              stroke="#00FF55" stroke-width="8" fill="none" stroke-linecap="round"></path>
+                                    </svg>
+                                </div>
+                            </span> 
+                            становятся разговорами.
+                        </h1>
+                        <p class="hero-description">
+                            Speeky — твой уголок общения. Без лишнего шума, только люди и темы, которые тебе действительно важны.
+                        </p>
+                        <a class="telegram-link" target="_blank" rel="noopener noreferrer" 
+                           aria-label="Перейти в Telegram-канал Speeky (откроется в новой вкладке)" 
+                           href="https://t.me/speeky_chat">
+                            <p>Следить в Telegram</p>
+                            <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                                <path d="M14.643 0.123633C12.5322 1.04925 3.48157 5.01852 0.980887 6.10034C-0.696187 6.79328 0.285594 7.44298 0.285594 7.44298C0.285594 7.44298 1.71718 7.96264 2.94445 8.35243C4.17155 8.74222 4.82601 8.3092 4.82601 8.3092L10.5935 4.1948C12.6387 2.72229 12.1479 3.93488 11.657 4.45472C10.5935 5.58086 8.83462 7.35634 7.36204 8.78563C6.70757 9.39193 7.03472 9.91159 7.32121 10.1715C8.38465 11.1244 11.289 13.0733 11.4525 13.2032C12.3166 13.8509 14.0163 14.7832 14.2748 12.8134L15.2974 6.01388C15.6247 3.71856 15.9519 1.59633 15.9927 0.990033C16.1156 -0.482665 14.643 0.123633 14.643 0.123633Z" fill="white"></path>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="hero-image">
+                        <img draggable="false" alt="Скриншот интерфейса Speeky" src="image.png">
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Секция особенностей -->
+            <section aria-labelledby="features-heading" class="features-section">
+                <h2 id="features-heading" class="features-heading">Особенности Speeky</h2>
+                <div class="features-container">
+                    <!-- Мобильная версия -->
+                    <div class="mobile-features">
+                        <div class="feature-card">
+                            <div class="feature-content">
+                                <h3 class="feature-title">Современный</h3>
+                                <p class="feature-description">
+                                    построен на основе новейших технологий, обеспечивающих быструю работу, высокую безопасность и адаптацию под любые устройства.
+                                </p>
+                            </div>
+                            <img class="feature-image" draggable="false" alt="smart" src="smart.png">
+                            <div class="feature-glow"></div>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-content">
+                                <h3 class="feature-title">Простой</h3>
+                                <p class="feature-description">
+                                    Мы убрали всё лишнее, чтобы вы могли сосредоточиться на общении. Минимум кликов, оптимизированная навигация.
+                                </p>
+                            </div>
+                            <img class="feature-image" style="left: 0; right: auto;" draggable="false" alt="simple" src="simple.png">
+                            <div class="feature-glow" style="background-color: #518ADB; left: 0; right: auto;"></div>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-content">
+                                <h3 class="feature-title">Легкий</h3>
+                                <p class="feature-description">
+                                    не расходует ресурсы зря: быстрый запуск, низкая нагрузка на батарею и плавная работа даже на слабых устройствах.
+                                </p>
+                            </div>
+                            <img class="feature-image" draggable="false" alt="light" src="lightwight.png">
+                            <div class="feature-glow" style="background-color: #00FF55;"></div>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-content">
+                                <h3 class="feature-title">Минимализм</h3>
+                                <p class="feature-description">
+                                    Фокус только на главном — ваши сообщения. Нейтральные цвета, лаконичные иконки и отсутствие отвлекающих деталей.
+                                </p>
+                            </div>
+                            <img class="feature-image" style="left: 0; right: auto;" draggable="false" alt="minimal" src="minimal.png">
+                            <div class="feature-glow" style="background-color: #FFF600; left: 0; right: auto;"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Десктопная версия -->
+                    <div class="desktop-features">
+                        <div class="features-row first-row">
+                            <div class="desktop-feature-card">
+                                <div class="desktop-feature-content">
+                                    <p class="desktop-feature-title">Современный</p>
+                                    <p class="desktop-feature-description">
+                                        построен на основе новейших технологий, обеспечивающих быструю работу, высокую безопасность и адаптацию под любые устройства. Дизайн отражает актуальные тренды: чистые линии, свежие акценты и интуитивные элементы интерфейса.
+                                    </p>
+                                </div>
+                                <img class="desktop-feature-image" draggable="false" alt="smart" src="smart.png">
+                                <div class="desktop-feature-glow glow-red"></div>
+                            </div>
+                            
+                            <div class="desktop-feature-card">
+                                <div class="desktop-feature-content" style="align-items: end;">
+                                    <p class="desktop-feature-title">Простой</p>
+                                    <p class="desktop-feature-description" style="max-width: 178px; text-align: right;">
+                                        Мы убрали всё лишнее, чтобы вы могли сосредоточиться на общении. Минимум кликов, оптимизированная навигация и предельно понятные функции. Визуальный язык приложения ясен и дружелюбен - никаких перегрузок, только удобство.
+                                    </p>
+                                </div>
+                                <img class="desktop-feature-image" style="left: 0; right: auto;" draggable="false" alt="simple" src="simple.png">
+                                <div class="desktop-feature-glow glow-blue"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="features-row second-row">
+                            <div class="desktop-feature-card">
+                                <div class="desktop-feature-content">
+                                    <p class="desktop-feature-title">Легкий</p>
+                                    <p class="desktop-feature-description" style="max-width: 186px;">
+                                        не расходует ресурсы зря: быстрый запуск, низкая нагрузка на батарею и плавная работа даже на слабых устройствах. В дизайне - воздушные отступы создающие ощущение лёгкости и свободы.
+                                    </p>
+                                </div>
+                                <img class="desktop-feature-image" draggable="false" alt="light" src="lightwight.png">
+                                <div class="desktop-feature-glow glow-green"></div>
+                            </div>
+                            
+                            <div class="desktop-feature-card">
+                                <div class="desktop-feature-content" style="align-items: end;">
+                                    <p class="desktop-feature-title">Минимализм</p>
+                                    <p class="desktop-feature-description" style="max-width: 312px; text-align: right;">
+                                        Фокус только на главном — ваши сообщения. Мы придерживаемся минималистичного подхода как в архитектуре кода, так и в визуальном стиле: нейтральные цвета, лаконичные иконки и отсутствие отвлекающих деталей.
+                                    </p>
+                                </div>
+                                <img class="desktop-feature-image" style="left: 0; right: auto;" draggable="false" alt="minimal" src="minimal.png">
+                                <div class="desktop-feature-glow glow-yellow"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Секция протокола -->
+            <section aria-labelledby="protocol-heading" class="protocol-section">
+                <h2 id="protocol-heading" class="protocol-heading">Безопасный протокол</h2>
+                <div class="protocol-container">
+                    <div class="protocol-graphic">
+                        <svg width="1356" height="622" viewBox="0 0 1356 622" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M58.4576 615.052L62.0299 593.749C62.0299 593.749 76.2316 596.13 79.1423 578.773C81.1269 566.938 76.1333 562.856 71.3994 562.062C54.0417 559.151 58.7222 613.474 27.1629 608.181C12.9612 605.8 3.37565 590.402 7.08023 568.311C12.3725 536.752 31.313 535.061 39.2028 536.384L35.6305 557.686C35.6305 557.686 24.5847 555.834 22.0709 570.825C20.6155 579.504 24.24 584.978 29.2895 585.825C43.4912 588.207 41.9667 534.414 72.737 539.574C88.5167 542.22 98.1022 557.617 94.133 581.287C88.7085 613.635 67.9254 616.639 58.4576 615.052ZM127.129 545.82L20.5287 511.462L27.1549 490.904L37.8149 494.34L38.0603 493.578C38.0603 493.578 27.3247 482.553 32.9693 465.04C40.3317 442.198 63.81 437.157 85.8914 444.274C107.973 451.391 124.089 469.193 116.726 492.036C111.327 508.787 98.4585 512.204 98.4585 512.204L98.2131 512.966L134 524.5L127.129 545.82ZM66.7491 503.665C81.0639 508.279 94.601 505.918 98.773 492.974C102.945 480.029 93.3347 470.208 79.0198 465.594C64.705 460.98 51.168 463.341 46.9959 476.286C42.8239 489.23 52.4343 499.052 66.7491 503.665ZM90.6393 432.627C68.8676 421.789 57.5954 400.272 69.7878 375.778C81.9801 351.285 105.231 348.74 127.002 359.577C128.721 360.433 131.228 361.859 131.228 361.859L104.99 414.57C116.876 419.414 127.895 418.823 133.884 406.791C139.944 394.616 129.555 386.763 129.555 386.763L139.537 366.71C139.537 366.71 163.897 384.198 148.567 414.993C136.089 440.06 112.411 443.465 90.6393 432.627ZM84.8275 383.265C79.9077 393.148 84.0723 401.298 92.3838 407.58L108.141 375.925C98.3324 372.651 89.7472 373.382 84.8275 383.265ZM133.333 348.925C113.387 335.01 105.395 312.071 121.05 289.632C136.706 267.194 160.078 268.088 180.023 282.004C181.598 283.102 183.868 284.881 183.868 284.881L150.178 333.17C161.225 339.707 172.211 340.738 179.901 329.716C187.683 318.562 178.558 309.27 178.558 309.27L191.375 290.899C191.375 290.899 212.904 311.773 193.221 339.985C177.2 362.948 153.278 362.841 133.333 348.925ZM134.828 299.245C128.511 308.299 131.435 316.972 138.734 324.406L158.967 295.406C149.745 290.728 141.145 290.191 134.828 299.245ZM218.636 300.352L157.816 243.578L173.101 227.204L197.663 250.131L193.299 205.566L211.314 186.267L213.658 231.355L273.225 241.871L254.556 261.871L214.764 253.618L215.441 266.727L233.921 283.977L218.636 300.352ZM286.671 124.714L317.275 209.96C324.1 228.907 323.488 241.927 310.399 252.459C304.167 257.475 297.676 259.617 297.676 259.617L286.141 245.282C286.141 245.282 290.883 243.52 295.246 240.009C301.479 234.993 301.264 229.622 298.942 221.632L220.605 177.877L239.303 162.831L289.539 192.848L267.973 139.76L286.671 124.714ZM362.811 142.111L382.058 132.307C382.058 132.307 388.594 145.139 404.277 137.15C414.969 131.703 415.279 125.261 413.1 120.984C405.112 105.301 364.237 141.385 349.712 112.871C343.176 100.04 349.848 83.1746 369.807 73.0074C398.321 58.4828 410.95 72.6996 414.581 79.828L395.334 89.6321C395.334 89.6321 390.251 79.6523 376.707 86.5515C368.865 90.5457 366.622 96.7163 368.946 101.279C375.482 114.11 417.809 80.8772 431.97 108.678C439.233 122.935 432.561 139.801 411.176 150.694C381.949 165.582 367.168 150.666 362.811 142.111ZM434.505 90.4083C426.642 67.3944 433.754 44.1674 459.645 35.3218C485.536 26.4762 503.86 41.0127 511.722 64.0266C512.343 65.8435 513.123 68.6205 513.123 68.6205L457.405 87.6567C462.452 99.4589 470.703 106.785 483.421 102.439C496.291 98.0424 494.424 85.1539 494.424 85.1539L515.621 77.9119C515.621 77.9119 520.648 107.474 488.096 118.596C461.6 127.648 442.367 113.422 434.505 90.4083ZM465.077 51.2196C454.63 54.7888 451.861 63.5124 453.355 73.8232L486.816 62.3911C482.143 53.1666 475.524 47.6503 465.077 51.2196ZM523.689 60.9042C519.274 36.9883 529.862 15.0211 556.61 10.083C592.798 3.40213 601.113 35.2214 601.113 35.2214L579.085 39.288C579.085 39.288 575.394 23.6991 559.66 26.6039C545.656 29.1891 542.987 42.0475 545.717 56.8375C548.447 71.6276 555.533 82.6851 569.536 80.0999C585.27 77.1951 583.152 61.3158 583.152 61.3158L605.18 57.2491C605.18 57.2491 608.774 89.9398 572.586 96.6207C545.838 101.559 528.104 84.82 523.689 60.9042ZM692.16 0.360293L695.298 83.5011L673.714 84.3159L673.201 70.7256L672.401 70.7558C672.401 70.7558 665.81 87.016 647.423 87.7102C624.24 88.5854 617.271 73.6377 616.546 54.4514L614.615 3.28779L636.999 2.44274L638.749 48.8097C639.293 63.1995 643.531 69.444 653.924 69.0517C665.915 68.599 672.039 61.1626 671.405 44.3746L669.776 1.20535L692.16 0.360293ZM703.229 83.7253L710.994 0.888389L733.296 2.97882L731.654 20.502L742.805 21.5472C752.363 22.4431 755.549 22.7418 756.519 12.3871L757.191 5.21856L779.494 7.30899L778.598 16.8671C776.88 35.1868 769.986 40.1651 746.887 38L730.16 36.4322L725.532 85.8157L703.229 83.7253ZM782.456 50.1664C787.922 26.4686 806.221 10.4929 832.881 16.6425C859.541 22.7921 867.434 44.8096 861.968 68.5073C861.537 70.3782 860.733 73.1485 860.733 73.1485L803.36 59.9143C801.418 72.6025 804.561 83.1796 817.658 86.2005C830.91 89.2573 836.125 77.3243 836.125 77.3243L857.952 82.359C857.952 82.359 846.622 110.123 813.102 102.391C785.818 96.0973 776.99 73.8641 782.456 50.1664ZM829.105 33.0126C818.348 30.5312 811.393 36.4802 807.22 46.0266L841.675 53.9743C842.574 43.6727 839.863 35.4941 829.105 33.0126ZM883.273 150.033L931.093 48.7549L950.626 57.9775L945.843 68.1053L946.567 68.4468C946.567 68.4468 958.884 59.223 975.523 67.0793C997.225 77.3265 999.195 101.259 989.29 122.238C979.384 143.217 959.652 156.902 937.949 146.655C922.034 139.14 920.306 125.938 920.306 125.938L919.582 125.596L903.528 159.597L883.273 150.033ZM932.864 95.5949C926.442 109.195 927.037 122.924 939.335 128.73C951.633 134.537 962.613 126.274 969.034 112.674C975.456 99.0736 974.86 85.3451 962.562 79.5383C950.264 73.7315 939.285 81.9948 932.864 95.5949ZM977.738 163.387L1023.13 93.658L1041.9 105.878L1032.3 120.628L1041.68 126.738C1049.73 131.976 1052.41 133.721 1058.09 125.005L1062.01 118.971L1080.79 131.191L1075.55 139.237C1065.51 154.658 1057.09 155.859 1037.65 143.203L1023.57 134.038L996.511 175.607L977.738 163.387ZM1080.45 185.066C1070.66 196.48 1067.11 209.46 1077.92 218.733C1088.72 228.006 1101.01 222.528 1110.81 211.115C1120.6 199.701 1124.15 186.721 1113.34 177.448C1102.53 168.175 1090.24 173.653 1080.45 185.066ZM1063.45 170.48C1079.29 152.023 1103.52 146.882 1124.28 164.699C1145.05 182.516 1143.64 207.245 1127.81 225.702C1111.97 244.158 1087.74 249.299 1066.98 231.482C1046.21 213.665 1047.61 188.936 1063.45 170.48ZM1163.27 202.749L1213.19 258.99L1200.02 270.674L1181.97 250.331L1152.65 276.353C1147.27 281.133 1147.06 284.521 1151.84 289.906C1155.03 293.495 1157.22 294.759 1157.22 294.759L1144.66 305.912C1144.66 305.912 1140.81 303.982 1134.43 296.803C1124.34 285.435 1120.43 275.001 1134.79 262.256L1167.1 233.578L1150.1 214.433L1163.27 202.749ZM1198.64 311.279C1186.11 319.592 1179.16 331.113 1187.03 342.98C1194.9 354.847 1208.22 352.926 1220.75 344.613C1233.29 336.3 1240.24 324.778 1232.36 312.911C1224.49 301.044 1211.18 302.966 1198.64 311.279ZM1186.26 292.612C1206.53 279.169 1231.24 280.825 1246.36 303.625C1261.49 326.426 1253.4 349.838 1233.13 363.28C1212.87 376.723 1188.15 375.067 1173.03 352.266C1157.91 329.466 1165.99 306.054 1186.26 292.612ZM1239.27 374.228C1261.31 363.951 1285.23 368.685 1296.73 393.337C1312.28 426.69 1283.56 442.726 1283.56 442.726L1274.1 422.424C1274.1 422.424 1288.26 414.938 1281.5 400.437C1275.48 387.531 1262.37 388.174 1248.73 394.53C1235.1 400.886 1226.18 410.52 1232.2 423.426C1238.96 437.927 1253.8 431.89 1253.8 431.89L1263.26 452.192C1263.26 452.192 1232.52 463.878 1216.97 430.525C1205.48 405.874 1217.23 384.506 1239.27 374.228ZM1284.17 480.635C1269.74 484.892 1259.71 493.858 1263.74 507.516C1267.77 521.174 1281.07 523.256 1295.49 518.999C1309.92 514.742 1319.95 505.776 1315.92 492.118C1311.89 478.46 1298.59 476.378 1284.17 480.635ZM1277.83 459.151C1301.15 452.267 1324.29 461.121 1332.03 487.363C1339.78 513.604 1325.16 533.599 1301.83 540.483C1278.51 547.367 1255.37 538.512 1247.63 512.271C1239.89 486.03 1254.5 466.035 1277.83 459.151ZM1290.41 619.047L1273.01 621.714L1263.43 559.243L1345.67 546.638L1349.07 568.779L1284.22 578.718L1290.41 619.047Z" fill="white"></path>
+                        </svg>
+                    </div>
+                    
+                    <div class="protocol-content">
+                        <svg width="227" height="180" viewBox="0 0 227 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="protocol-logo">
+                            <path d="M172 66.6341C172 59.4594 171.146 52.355 169.488 45.7266C167.83 39.0981 165.399 33.0753 162.334 28.002C159.27 22.9287 155.632 18.9045 151.629 16.1588C147.625 13.4132 143.334 12 139 12C134.666 12 130.375 13.4132 126.371 16.1588C122.368 18.9045 118.73 22.9287 115.666 28.002C112.601 33.0753 110.17 39.0981 108.512 45.7266C106.854 52.355 106 59.4594 106 66.6341V132" stroke="#376CB6" stroke-width="23" stroke-linecap="round" fill="none"></path>
+                            <path d="M37 114.276C37 121.332 37.9182 128.318 39.7022 134.836C41.4862 141.354 44.1012 147.276 47.3977 152.265C50.6942 157.253 54.6076 161.211 58.9148 163.911C63.2218 166.61 67.838 168 72.5 168C77.162 168 81.7782 166.61 86.0852 163.911C90.3924 161.211 94.3058 157.253 97.6023 152.265C100.899 147.276 103.514 141.354 105.298 134.836C107.082 128.318 108 121.332 108 114.276V50" stroke="#376CB6" stroke-width="23" stroke-linecap="round" fill="none"></path>
+                            <path d="M0 103.156L19.2614 100.542C19.5716 102.471 20.4711 104.152 21.9599 105.583C23.4487 107.014 25.4337 108.135 27.9151 108.944C30.4585 109.691 33.4361 110.064 36.8479 110.064C41.5625 110.064 45.2845 109.473 48.0139 108.29C50.7434 107.046 52.1081 105.241 52.1081 102.876C52.1081 101.071 51.3327 99.6709 49.7819 98.6752C48.2311 97.6795 45.2534 96.9638 40.8491 96.5281L27.822 95.3146C18.1448 94.3811 11.166 92.2029 6.88572 88.7801C2.54337 85.2327 0.372201 80.4719 0.372201 74.4974C0.372201 69.6432 1.76795 65.5358 4.55946 62.1752C7.413 58.8146 11.3831 56.2941 16.4699 54.6138C21.6187 52.8713 27.6049 52 34.4286 52C41.1282 52 47.0834 52.9646 52.2943 54.8939C57.5051 56.7609 61.6303 59.4369 64.6699 62.922C67.7716 66.4071 69.4465 70.4523 69.6947 75.0575H50.1541C49.906 73.3772 49.0995 71.9459 47.7348 70.7634C46.4321 69.5188 44.6331 68.5853 42.3379 67.9629C40.0426 67.2783 37.2821 66.9361 34.0564 66.9361C29.7141 66.9361 26.2712 67.5273 23.7278 68.7097C21.1844 69.8299 19.9128 71.5102 19.9128 73.7506C19.9128 75.3687 20.6572 76.6756 22.146 77.6714C23.6968 78.6671 26.4573 79.3517 30.4274 79.7251L44.2919 81.1253C51.1156 81.8099 56.4195 82.8679 60.2035 84.2992C64.1737 85.8551 67.0582 87.971 68.8572 90.6471C70.6562 93.3231 71.5557 96.6526 71.5557 100.636C71.5557 105.552 70.0979 109.846 67.1823 113.518C64.2667 117.127 60.1725 119.959 54.8997 122.013C49.6268 124.004 43.4855 125 36.4757 125C29.2798 125 22.9214 124.004 17.4004 122.013C11.9415 119.959 7.87826 117.439 5.21081 114.451C2.54337 111.464 0.806436 107.699 0 103.156ZM78.4202 103.156L97.6817 100.542C97.9918 102.471 98.8913 104.152 100.38 105.583C101.869 107.014 103.854 108.135 106.335 108.944C108.879 109.691 111.856 110.064 115.268 110.064C119.983 110.064 123.705 109.473 126.434 108.29C129.164 107.046 130.528 105.241 130.528 102.876C130.528 101.071 129.753 99.6709 128.202 98.6752C126.651 97.6795 123.674 96.9638 119.269 96.5281L106.242 95.3146C96.5651 94.3811 89.5863 92.2029 85.306 88.7801C80.9636 85.2327 78.7925 80.4719 78.7925 74.4974C78.7925 69.6432 80.1882 65.5358 82.9797 62.1752C85.8333 58.8146 89.8034 56.2941 94.8901 54.6138C100.039 52.8713 106.025 52 112.849 52C119.548 52 125.504 52.9646 130.714 54.8939C135.925 56.7609 140.051 59.4369 143.09 62.922C146.192 66.4071 147.867 70.4523 148.115 75.0575H128.574C128.326 73.3772 127.52 71.9459 126.155 70.7634C124.852 69.5188 123.053 68.5853 120.758 67.9629C118.463 67.2783 115.702 66.9361 112.477 66.9361C108.134 66.9361 104.691 67.5273 102.148 68.7097C99.6047 69.8299 98.333 71.5102 98.333 73.7506C98.333 75.3687 99.0774 76.6756 100.566 77.6714C102.117 78.6671 104.878 79.3517 108.848 79.7251L122.712 81.1253C129.536 81.8099 134.84 82.8679 138.624 84.2992C142.594 85.8551 145.478 87.971 147.277 90.6471C149.076 93.3231 149.976 96.6526 149.976 100.636C149.976 105.552 148.518 109.846 145.603 113.518C142.687 117.127 138.593 119.959 133.32 122.013C128.047 124.004 121.906 125 114.896 125C107.7 125 101.342 124.004 95.8206 122.013C90.3617 119.959 86.2985 117.439 83.6311 114.451C80.9636 111.464 79.2267 107.699 78.4202 103.156ZM198.806 53.4936C204.637 53.4936 209.662 54.4893 213.88 56.4808C218.16 58.4723 221.417 61.3039 223.65 64.9757C225.883 68.5853 227 72.8171 227 77.6714C227 82.4633 225.883 86.6952 223.65 90.367C221.417 93.9766 218.16 96.7771 213.88 98.7685C209.662 100.76 204.637 101.756 198.806 101.756H168.565V86.2596H197.596C200.698 86.2596 203.117 85.5128 204.854 84.0192C206.591 82.4633 207.459 80.3474 207.459 77.6714C207.459 74.9331 206.591 72.8171 204.854 71.3235C203.117 69.7677 200.698 68.9898 197.596 68.9898H170.24L178.894 60.0281L178.801 121.826L159.632 123.506V53.4936H198.806Z" fill="white"></path>
+                        </svg>
+                        
+                        <div class="protocol-text">
+                            <p>
+                                Современный протокол, который защищает ваши чаты и звонки от любых перехватов, даже будущих квантовых атак. Он сочетает проверенные криптоалгоритмы и особый способ передачи данных, делая взлом бессмысленным. Работает через WebSocket и TCP, обеспечивая надёжность и удобство. Для вас это значит одно: ваши переписки и звонки остаются только 
+                                <span class="protocol-highlight">
+                                    вашими.
+                                    <div class="protocol-underline">
+                                        <svg width="90" height="13" viewBox="0 0 103 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M1 8.5L10.3253 6.67548C19.362 4.90743 28.6497 4.8454 37.7092 6.49259L47.2493 8.22714C53.639 9.38891 60.2213 8.86306 66.3456 6.70155V6.70155C71.3896 4.92133 76.7573 4.24619 82.085 4.72187L102 6.5" stroke="#7A6CFB" stroke-width="8"></path>
+                                        </svg>
+                                    </div>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Секция FAQ -->
+            <section aria-labelledby="faq-title" class="faq-section">
+                <div id="faq" class="faq-container">
+                    <div class="faq-header">
+                        <h2 id="faq-title" class="faq-title">Часто задаваемые вопросы</h2>
+                        <p class="faq-subtitle">Ответы на самые популярные вопросы о Speeky</p>
+                    </div>
+                    
+                    <div class="faq-list" aria-labelledby="faq-title">
+                        <div class="faq-item">
+                            <button class="faq-button" tabindex="0">
+                                <span class="faq-question">Что такое Speeky?</span>
+                                <div class="faq-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus" aria-hidden="true">
+                                        <path d="M5 12h14"></path>
+                                        <path d="M12 5v14"></path>
+                                    </svg>
+                                </div>
+                            </button>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <button class="faq-button" tabindex="0">
+                                <span class="faq-question">Насколько безопасен Speeky?</span>
+                                <div class="faq-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus" aria-hidden="true">
+                                        <path d="M5 12h14"></path>
+                                        <path d="M12 5v14"></path>
+                                    </svg>
+                                </div>
+                            </button>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <button class="faq-button" tabindex="0">
+                                <span class="faq-question">Будет ли Speeky бесплатным?</span>
+                                <div class="faq-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus" aria-hidden="true">
+                                        <path d="M5 12h14"></path>
+                                        <path d="M12 5v14"></path>
+                                    </svg>
+                                </div>
+                            </button>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <button class="faq-button" tabindex="0">
+                                <span class="faq-question">Когда запустится Speeky?</span>
+                                <div class="faq-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus" aria-hidden="true">
+                                        <path d="M5 12h14"></path>
+                                        <path d="M12 5v14"></path>
+                                    </svg>
+                                </div>
+                            </button>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <button class="faq-button" tabindex="0">
+                                <span class="faq-question">На каких устройствах будет работать Speeky?</span>
+                                <div class="faq-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus" aria-hidden="true">
+                                        <path d="M5 12h14"></path>
+                                        <path d="M12 5v14"></path>
+                                    </svg>
+                                </div>
+                            </button>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <button class="faq-button" tabindex="0">
+                                <span class="faq-question">Чем Speeky отличается от других мессенджеров?</span>
+                                <div class="faq-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus" aria-hidden="true">
+                                        <path d="M5 12h14"></path>
+                                        <path d="M12 5v14"></path>
+                                    </svg>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <!-- Футер -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <p>Speeky (2025-2026)</p>
+                <p class="footer-copyright">All rights reserved</p>
+            </div>
+            <div class="footer-right">
+                <p>Restudios (2025)</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
